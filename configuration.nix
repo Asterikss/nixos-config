@@ -2,7 +2,7 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ config, pkgs, ... }:
+{ config, pkgs, pkgs-stable, ... }:
 
 {
   imports =
@@ -90,20 +90,25 @@
     isNormalUser = true;
     description = "lono";
     extraGroups = [ "networkmanager" "wheel" ];
-    packages = with pkgs; [
-      kdePackages.kate
+    # packages = with pkgs; [
+    #   kdePackages.kate
     #  thunderbird
-    ];
+    # ];
   };
 
   # Install firefox.
-  programs.firefox.enable = true;
+  # programs.firefox.enable = true;
+  programs.firefox = {
+    enable = true;
+    package = pkgs-stable.firefox;
+  }
 
   # ######
   # programs.hyprland.enable = true;
   programs.hyprland = {
     enable = true;
     # nvidiaPatches = true; # Depriciated, no longer needed
+    package = pkgs-stable.hyprland;
     xwayland.enable = true;
   };
 
@@ -122,14 +127,15 @@
   # ~~~~~~~~~~~~
   # kitty.enable = true;    # required for the default Hyprland config # https://wiki.hyprland.org/Nix/Hyprland-on-NixOS/
 
+  # Nvidia
+  # Load nvidia driver for Xorg and Wayland
+  services.xserver.videoDrivers = ["nvidia"];
   # Enable OpenGL
   hardware.opengl = {
     enable = true;
   };
+  # hardware.nvidia.package = config.boot.kernelPackages.nvidiaPackages.stable; # https://github.com/ryan4yin/nix-config/blob/i3-kickstarter/hosts/msi-rtx4090/default.nix
   hardware.nvidia.modesetting.enable = true;
-
-  # Load nvidia driver for Xorg and Wayland
-  services.xserver.videoDrivers = ["nvidia"];
 
   xdg.portal.enable = true;
   xdg.portal.extraPortals = [ pkgs.xdg-desktop-portal-gtk ];
@@ -139,7 +145,7 @@
 
   # List packages installed in system profile. To search, run:
   # $ nix search wget
-  environment.systemPackages = with pkgs; [
+  environment.systemPackages = with pkgs-stable; [
     git
     kitty
     wezterm
