@@ -11,16 +11,18 @@
   };
 
   outputs = inputs@{ nixpkgs, nixpkgs-stable, home-manager, ... }: {
-    nixosConfigurations = {
+    nixosConfigurations = let
+      system = "x86_64-linux";
+    in {
       nixos = nixpkgs.lib.nixosSystem {
-        system = "x86_64-linux";
+          inherit system;
 
-        specialArgs = {
-          pkgs-stable = import nixpkgs-stable {
-            inherit system;
-            config.allowUnfree = true;
+          specialArgs = {
+            pkgs-stable = import nixpkgs-stable {
+              inherit system;
+              config.allowUnfree = true;
+            };
           };
-        };
 
         modules = [
           ./configuration.nix
