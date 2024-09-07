@@ -101,7 +101,7 @@
   programs.firefox = {
     enable = true;
     package = pkgs-stable.firefox;
-  }
+  };
 
   # ######
   # programs.hyprland.enable = true;
@@ -136,6 +136,7 @@
   };
   # hardware.nvidia.package = config.boot.kernelPackages.nvidiaPackages.stable; # https://github.com/ryan4yin/nix-config/blob/i3-kickstarter/hosts/msi-rtx4090/default.nix
   hardware.nvidia.modesetting.enable = true;
+  hardware.nvidia.open = false;
 
   xdg.portal.enable = true;
   xdg.portal.extraPortals = [ pkgs.xdg-desktop-portal-gtk ];
