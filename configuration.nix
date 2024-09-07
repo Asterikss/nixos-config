@@ -131,7 +131,7 @@
   # Load nvidia driver for Xorg and Wayland
   services.xserver.videoDrivers = ["nvidia"];
   # Enable OpenGL
-  hardware.opengl = {
+  hardware.graphics = { # used to be hardware.opengl it might change again
     enable = true;
   };
   hardware.nvidia = {
@@ -151,23 +151,42 @@
 
   # ~~~~~~~~~~~~
 
-  # List packages installed in system profile. To search, run:
-  # $ nix search wget
-  environment.systemPackages = with pkgs-stable; [
-    git
-    kitty
-    wezterm
-    neovim
-    rofi-wayland
-    waybar
-    dunst
-    libnotify # dunst depends on it
-    swww
-    brave
-    wl-clipboard # for global clipbaord in neovim
-  #  vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
+  environment.systemPackages =
+    (with pkgs; [
+       neovim
+    ])
+
+    ++
+
+    (with pkgs-stable; [
+      kitty
+      wezterm
+      rofi-wayland
+      waybar
+      dunst
+      libnotify # dunst depends on it
+      swww
+      brave
+      wl-clipboard # for global clipbaord in neovim
+    ]);
+
   #  wget
-  ];
+
+  # environment.systemPackages = with pkgs-stable; [
+  #     kitty
+  #         wezterm
+  #         neovim
+  #         rofi-wayland
+  #         waybar
+  #         dunst
+  #         libnotify # dunst depends on it
+  #         swww
+  #         brave
+  #         wl-clipboard # for global clipbaord in neovim
+  #       # git
+  #       #  vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
+  #   #  wget
+  # ];
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
