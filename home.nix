@@ -96,11 +96,11 @@
   ];
 
   # basic configuration of git, please change to your own
-  # programs.git = {
-  #   enable = true;
-  #   userName = "Asterikss";
-  #   userEmail = "AndreAndreM@proton.me";
-  # };
+  programs.git = {
+    enable = true;
+    userName = "Asterikss";
+    userEmail = "AndreAndreM@proton.me";
+  };
 
   # starship - an customizable prompt for any shell
   # programs.starship = {

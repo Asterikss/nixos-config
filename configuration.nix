@@ -134,9 +134,16 @@
   hardware.opengl = {
     enable = true;
   };
-  # hardware.nvidia.package = config.boot.kernelPackages.nvidiaPackages.stable; # https://github.com/ryan4yin/nix-config/blob/i3-kickstarter/hosts/msi-rtx4090/default.nix
-  hardware.nvidia.modesetting.enable = true;
-  hardware.nvidia.open = false;
+  hardware.nvidia = {
+    modesetting.enable = true;
+    open = false;
+    # https://discourse.nixos.org/t/solved-what-are-the-options-for-hardware-nvidia-package-docs-seem-out-of-date/14251
+    # https://nixos.wiki/wiki/Nvidia#CUDA
+    # https://nixos.wiki/wiki/Nvidia#Running_the_new_RTX_SUPER_on_nixos_stable
+    # https://github.com/ryan4yin/nix-config/blob/i3-kickstarter/hosts/msi-rtx4090/default.nix
+    # https://discourse.nixos.org/t/issues-with-my-nvidia-gpu-config/35327/2
+    # package = config.boot.kernelPackages.nvidiaPackages.stable;
+  };
 
   xdg.portal.enable = true;
   xdg.portal.extraPortals = [ pkgs.xdg-desktop-portal-gtk ];
