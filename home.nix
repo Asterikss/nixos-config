@@ -1,9 +1,14 @@
 { config, pkgs, ... }:
 
 {
-  # TODO please change the username & home directory to your own
   home.username = "lono";
   home.homeDirectory = "/home/lono";
+
+  programs.git = {
+      enable = true;
+      userName = "Asterikss";
+      userEmail = "AndreAndreM@proton.me";
+  };
 
   # link the configuration file in current directory to the specified location in home directory
   # home.file.".config/i3/wallpaper.jpg".source = ./wallpaper.jpg;
@@ -27,7 +32,7 @@
   # };
 
   # Packages that should be installed to the user profile.
-  home.packages = with pkgs; [
+  # home.packages = with pkgs; [
     # here is some command line tools I use frequently
     # feel free to add your own or remove some of them
 
@@ -93,14 +98,7 @@
     # ethtool
     # pciutils # lspci
     # usbutils # lsusb
-  ];
-
-  # basic configuration of git, please change to your own
-  programs.git = {
-    enable = true;
-    userName = "Asterikss";
-    userEmail = "AndreAndreM@proton.me";
-  };
+  # ];
 
   # starship - an customizable prompt for any shell
   # programs.starship = {

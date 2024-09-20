@@ -2,7 +2,7 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ config, pkgs, pkgs-stable, ... }:
+{ config, pkgs, pkgs-stable, inputs, ... }:
 
 {
   imports =
@@ -108,7 +108,8 @@
   programs.hyprland = {
     enable = true;
     # nvidiaPatches = true; # Depriciated, no longer needed
-    package = pkgs-stable.hyprland;
+    # package = pkgs-stable.hyprland;
+    package = inputs.hyprland.packages."${pkgs.system}".hyprland;
     xwayland.enable = true;
   };
 
@@ -143,6 +144,7 @@
     # https://github.com/ryan4yin/nix-config/blob/i3-kickstarter/hosts/msi-rtx4090/default.nix
     # https://discourse.nixos.org/t/issues-with-my-nvidia-gpu-config/35327/2
     # package = config.boot.kernelPackages.nvidiaPackages.stable;
+    # https://github.com/vimjoyer/nixconf/blob/main/hosts/laptop/included/nvidia.nix
   };
 
   xdg.portal.enable = true;
