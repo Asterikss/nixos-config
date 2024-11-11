@@ -119,7 +119,21 @@
   };
 
   hardware.bluetooth.enable = true;
-  # hardware.bluetooth.powerOnBoot = true; # powers up the default Bluetooth controller on boot # https://nixos.wiki/wiki/Bluetooth
+ 
+
+ # hardware.bluetooth.powerOnBoot = true; # powers up the default Bluetooth controller on boot # https://nixos.wiki/wiki/Bluetooth
+
+  programs.bash = {
+      interactiveShellInit = ''
+          if [[ $(${pkgs.procps}/bin/ps --no-header --pid=$PPID --format=comm) != "fish" && -z ''${BASH_EXECUTION_STRING} ]]
+          then
+              shopt -q login_shell && LOGIN_OPTION='--login' || LOGIN_OPTION=""
+              exec ${pkgs.fish}/bin/fish $LOGIN_OPTION
+          fi
+      '';
+  };
+
+
   # ######
 
   # Allow unfree packages
@@ -150,6 +164,7 @@
   xdg.portal.enable = true;
   xdg.portal.extraPortals = [ pkgs.xdg-desktop-portal-gtk ];
 
+  programs.fish.enable = true;
 
   # ~~~~~~~~~~~~
 

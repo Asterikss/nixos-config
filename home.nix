@@ -10,6 +10,10 @@
       userEmail = "AndreAndreM@proton.me";
   };
 
+  programs.fish = {
+    enable = true;
+  };
+
   # link the configuration file in current directory to the specified location in home directory
   # home.file.".config/i3/wallpaper.jpg".source = ./wallpaper.jpg;
 
@@ -125,6 +129,17 @@
   #     scrolling.multiplier = 5;
   #     selection.save_to_clipboard = true;
   #   };
+  # };
+
+  # programs.bash = {
+  #     enable = true;
+  #     interactiveShellInit = ''
+  #         if [[ $(${pkgs.procps}/bin/ps --no-header --pid=$PPID --format=comm) != "fish" && -z ''${BASH_EXECUTION_STRING} ]]
+  #         then
+  #             shopt -q login_shell && LOGIN_OPTION='--login' || LOGIN_OPTION=""
+  #             exec ${pkgs.fish}/bin/fish $LOGIN_OPTION
+  #         fi
+  #     '';
   # };
 
   # programs.bash = {
