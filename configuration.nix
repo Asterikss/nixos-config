@@ -162,7 +162,6 @@
 
     (with pkgs-stable; [
       kitty
-      wezterm
       rofi-wayland
       waybar
       dunst
@@ -170,7 +169,13 @@
       swww
       brave
       wl-clipboard # for global clipbaord in neovim
-    ]);
+    ])
+
+    ++
+    
+    [
+      inputs.wezterm.packages.${pkgs.system}.default
+    ];
 
   #  wget
 
