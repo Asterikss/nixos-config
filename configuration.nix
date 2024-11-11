@@ -197,6 +197,7 @@
 
   environment.systemPackages =
     (with pkgs; [
+       brave
        neovim
     ])
 
@@ -205,7 +206,6 @@
     (with pkgs-stable; [
       kitty
       rofi-wayland
-      brave
       waybar
       dunst
       libnotify # dunst depends on it
