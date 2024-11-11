@@ -5,21 +5,25 @@
   home.homeDirectory = "/home/lono";
 
   programs.git = {
-      enable = true;
-      userName = "Asterikss";
-      userEmail = "AndreAndreM@proton.me";
+    enable = true;
+    userName = "Asterikss";
+    userEmail = "AndreAndreM@proton.me";
   };
 
-  # starship - an customizable prompt for any shell
   programs.starship = {
-     enable = true;
-  #   # custom settings
-  #   settings = {
-  #     add_newline = false;
-  #     aws.disabled = true;
-  #     gcloud.disabled = true;
-  #     line_break.disabled = true;
-  #   };
+    enable = true;
+    settings = {
+      add_newline = false;
+      line_break.disabled = true;
+      cmd_duration.disabled = true;
+      # conda = {
+      #   disabled = false;
+      #   ignore_base = true;
+      #   format = "[$symbol$environment](dimmed green) "
+      # }
+      # aws.disabled = true;
+      # gcloud.disabled = true;
+    };
   };
   
   programs.fish = {
