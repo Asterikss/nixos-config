@@ -8,6 +8,7 @@
     enable = true;
     userName = "Asterikss";
     userEmail = "AndreAndreM@proton.me";
+    lfs.enable = true;
     extraConfig = {
         init.defaultBranch = "master";
     };

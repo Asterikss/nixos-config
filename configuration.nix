@@ -199,6 +199,7 @@
     (with pkgs; [
        brave
        neovim
+       vesktop
     ])
 
     ++
