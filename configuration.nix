@@ -197,9 +197,16 @@
 
   environment.systemPackages =
     (with pkgs; [
-       brave
-       neovim
-       vesktop
+      neovim
+      brave
+      vesktop
+      gimp
+
+      # screenshot utilities
+      grim
+      slurp
+      swappy
+      hyprpicker
     ])
 
     ++
