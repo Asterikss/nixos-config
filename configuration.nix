@@ -91,7 +91,7 @@
     description = "lono";
     extraGroups = [ "networkmanager" "wheel" ];
     # packages = with pkgs; [
-    #   kdePackages.kate
+    #  kdePackages.kate
     #  thunderbird
     # ];
   };
@@ -139,14 +139,11 @@
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
 
-  # ~~~~~~~~~~~~
-  # kitty.enable = true;    # required for the default Hyprland config # https://wiki.hyprland.org/Nix/Hyprland-on-NixOS/
-
   # Nvidia
   # Load nvidia driver for Xorg and Wayland
   services.xserver.videoDrivers = ["nvidia"];
   # Enable OpenGL
-  hardware.graphics = { # used to be hardware.opengl it might change again
+  hardware.graphics = { # used to be hardware.opengl, it might change again
     enable = true;
   };
   hardware.nvidia = {
@@ -193,7 +190,9 @@
 
   programs.fish.enable = true;
 
-  # ~~~~~~~~~~~~
+  # https://discourse.nixos.org/t/how-to-create-files-in-the-etc-udev-rules-d-directory/11929
+  # https://github.com/zsa/wally/wiki/Linux-install#2-create-a-udev-rule-file
+  hardware.keyboard.zsa.enable = true;
 
   environment.systemPackages =
     (with pkgs; [
@@ -207,6 +206,8 @@
       slurp
       swappy
       hyprpicker
+
+      #  wget
     ])
 
     ++
@@ -227,23 +228,6 @@
       inputs.wezterm.packages.${pkgs.system}.default
     ];
 
-  #  wget
-
-  # environment.systemPackages = with pkgs-stable; [
-  #     kitty
-  #         wezterm
-  #         neovim
-  #         rofi-wayland
-  #         waybar
-  #         dunst
-  #         libnotify # dunst depends on it
-  #         swww
-  #         brave
-  #         wl-clipboard # for global clipbaord in neovim
-  #       # git
-  #       #  vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
-  #   #  wget
-  # ];
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
