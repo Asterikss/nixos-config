@@ -66,6 +66,7 @@
       "ga." = "git add .";
       "gc" = "git commit -m";
       "gp" = "git push";
+      "gd" = "git diff";
 
       # Docker
       "di" = "docker images";

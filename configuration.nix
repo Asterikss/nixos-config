@@ -200,6 +200,8 @@
       brave
       vesktop
       gimp
+      mpv
+      fastfetch
 
       # screenshot utilities
       grim
