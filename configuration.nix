@@ -205,11 +205,15 @@
       swappy
       hyprpicker
 
-      # Hyprland utils
+      # hyprland utils
       hyprsunset
 
       # utils
+      btop
       wget
+
+      # fonts
+      font-awesome
     ])
 
     ++
