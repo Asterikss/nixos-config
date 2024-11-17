@@ -120,7 +120,6 @@
         grim -g "$(slurp -b '#000000b0' -c '#00000000')" - | swappy -f -
 
       elif [[ $1 == sc ]]; then
-        filename=~/Pictures/Screenshots/%Y-%m-%d_%H-%M-%S.png
         grim - | wl-copy
         notify-send 'Copied to Clipboard' Screenshot
 
@@ -142,6 +141,12 @@
     executable = true;
   };
 
+  home.file.".config/swappy/config" = {
+    text = ''
+      [Default]
+      save_dir=$HOME/Pictures/Screenshots
+    '';
+  };
 
   # link the configuration file in current directory to the specified location in home directory
   # home.file.".config/i3/wallpaper.jpg".source = ./wallpaper.jpg;
