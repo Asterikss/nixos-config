@@ -119,22 +119,18 @@
   };
 
   hardware.bluetooth.enable = true;
- 
 
  # hardware.bluetooth.powerOnBoot = true; # powers up the default Bluetooth controller on boot # https://nixos.wiki/wiki/Bluetooth
 
   programs.bash = {
-      interactiveShellInit = ''
-          if [[ $(${pkgs.procps}/bin/ps --no-header --pid=$PPID --format=comm) != "fish" && -z ''${BASH_EXECUTION_STRING} ]]
-          then
-              shopt -q login_shell && LOGIN_OPTION='--login' || LOGIN_OPTION=""
-              exec ${pkgs.fish}/bin/fish $LOGIN_OPTION
-          fi
-      '';
+    interactiveShellInit = ''
+      if [[ $(${pkgs.procps}/bin/ps --no-header --pid=$PPID --format=comm) != "fish" && -z ''${BASH_EXECUTION_STRING} ]]
+      then
+        shopt -q login_shell && LOGIN_OPTION='--login' || LOGIN_OPTION=""
+        exec ${pkgs.fish}/bin/fish $LOGIN_OPTION
+      fi
+    '';
   };
-
-
-  # ######
 
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
@@ -180,7 +176,6 @@
     # https://nixos.wiki/wiki/Nvidia#Running_the_new_RTX_SUPER_on_nixos_stable
     # https://github.com/ryan4yin/nix-config/blob/i3-kickstarter/hosts/msi-rtx4090/default.nix
     # https://discourse.nixos.org/t/issues-with-my-nvidia-gpu-config/35327/2
-    # package = config.boot.kernelPackages.nvidiaPackages.stable;
     # https://github.com/vimjoyer/nixconf/blob/main/hosts/laptop/included/nvidia.nix
     # https://discourse.nixos.org/t/nvidia-4070-super-requires-a-specific-driver/38830
   };
@@ -202,14 +197,19 @@
       gimp
       mpv
       fastfetch
+      zathura
 
-      # screenshot utilities
+      # screenshot utils
       grim
       slurp
       swappy
       hyprpicker
 
-      #  wget
+      # Hyprland utils
+      hyprsunset
+
+      # utils
+      wget
     ])
 
     ++
@@ -229,7 +229,6 @@
     [
       inputs.wezterm.packages.${pkgs.system}.default
     ];
-
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
