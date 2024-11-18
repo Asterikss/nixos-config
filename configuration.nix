@@ -211,6 +211,8 @@
       # utils
       btop
       wget
+      brightnessctl
+      pavucontrol
 
       # fonts
       font-awesome
