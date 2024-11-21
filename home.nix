@@ -45,6 +45,7 @@
       d = {
         body = "cd ..; and ls";
       };
+      gc = ''git commit -m "$argv"'';
     };
 
     shellAliases = {
@@ -64,7 +65,6 @@
       "st" = "git status";
       "ga" = "git add";
       "ga." = "git add .";
-      "gc" = "git commit -m";
       "gp" = "git push";
       "gd" = "git diff";
 
