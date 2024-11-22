@@ -29,7 +29,7 @@
       # gcloud.disabled = true;
     };
   };
-  
+
   programs.fish = {
     enable = true;
 
@@ -85,10 +85,6 @@
       # "sa" ='source activate'
       # "k" ='zellij'
     };
-  };
-
-  home.sessionVariables = {
-    EDITOR = "nvim";
   };
 
   home.file.".config/scripts/screenshot.sh" = {
@@ -147,6 +143,10 @@
       save_dir=$HOME/Pictures/Screenshots
     '';
   };
+
+  imports = [
+    ./modules/neovim
+  ];
 
   # link the configuration file in current directory to the specified location in home directory
   # home.file.".config/i3/wallpaper.jpg".source = ./wallpaper.jpg;

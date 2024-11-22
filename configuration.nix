@@ -149,7 +149,7 @@
     powerManagement.finegrained = false;
     nvidiaSettings = true;
     # package = config.boot.kernelPackages.nvidiaPackages.production;
-    package = let 
+    package = let
         rcu_patch = pkgs.fetchpatch {
             url = "https://github.com/gentoo/gentoo/raw/c64caf53/x11-drivers/nvidia-drivers/files/nvidia-drivers-470.223.02-gpl-pfn_valid.patch";
             hash = "sha256-eZiQQp2S/asE7MfGvfe6dA/kdCvek9SYa/FFGp24dVg=";
@@ -189,9 +189,10 @@
   # https://github.com/zsa/wally/wiki/Linux-install#2-create-a-udev-rule-file
   hardware.keyboard.zsa.enable = true;
 
+  # programs.neovim.enable = true;
+
   environment.systemPackages =
     (with pkgs; [
-      neovim
       brave
       vesktop
       gimp
@@ -231,7 +232,7 @@
     ])
 
     ++
-    
+
     [
       inputs.wezterm.packages.${pkgs.system}.default
     ];
