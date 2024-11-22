@@ -30,7 +30,7 @@ in
 
   home.file.".config/nvim/" = {
     source = config.lib.file.mkOutOfStoreSymlink
-     "${config.home.homeDirectory}/nixos-config/nvim/";
+     "${config.home.homeDirectory}/cave/nixos-config/nvim/";
     # source = ../../nvim;
     recursive = true;
   };

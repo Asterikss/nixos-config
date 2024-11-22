@@ -50,6 +50,7 @@
 
     shellAliases = {
       "v" = "nvim";
+      "f" = "nvim";
       "h" = "nvim .";
       "S" = "v -S .dev/Session.vim";
       "n" = "nvim .dev/notes.txt";
@@ -57,9 +58,10 @@
       "s" = "source ~/.scripts/sessionizer_s";
       "p" = "python3";
       "l" = "ls";
+      "cc" = "cd ~/cave/";
 
       # NixOS
-      "reb" = "sudo nixos-rebuild switch --flake /home/lono/nixos-config";
+      "reb" = "sudo nixos-rebuild switch --flake ~/cave/nixos-config";
 
       # Git
       "st" = "git status";
