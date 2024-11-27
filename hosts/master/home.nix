@@ -122,8 +122,8 @@
 
   imports = [
     ../../modules/neovim
-    ../../modules/git.nix
-    ../../modules/starship.nix
+    ../../modules/git
+    ../../modules/starship
   ];
 
   # link the configuration file in current directory to the specified location in home directory
