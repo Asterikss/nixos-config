@@ -24,9 +24,9 @@ in
     ];
   };
 
-  home.packages = with pkgs; [
-    black
-  ];
+  # home.packages = with pkgs; [
+  #   black
+  # ];
 
   home.file.".config/nvim/" = {
     source = config.lib.file.mkOutOfStoreSymlink

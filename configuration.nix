@@ -217,6 +217,16 @@
 
       # fonts
       font-awesome
+
+      # dev
+      ripgrep
+      black
+      fd
+      cmake
+      # lua-language-server
+      # rust-analyzer-unwrapped
+      # nodejs_22
+      # gh
     ])
 
     ++
