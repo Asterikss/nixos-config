@@ -4,32 +4,6 @@
   home.username = "lono";
   home.homeDirectory = "/home/lono";
 
-  programs.git = {
-    enable = true;
-    userName = "Asterikss";
-    userEmail = "AndreAndreM@proton.me";
-    lfs.enable = true;
-    extraConfig = {
-      init.defaultBranch = "master";
-    };
-  };
-
-  programs.starship = {
-    enable = true;
-    settings = {
-      add_newline = false;
-      line_break.disabled = true;
-      cmd_duration.disabled = true;
-      # conda = {
-      #   disabled = false;
-      #   ignore_base = true;
-      #   format = "[$symbol$environment](dimmed green) "
-      # }
-      # aws.disabled = true;
-      # gcloud.disabled = true;
-    };
-  };
-
   programs.fish = {
     enable = true;
 
@@ -148,6 +122,8 @@
 
   imports = [
     ./modules/neovim
+    ./modules/git.nix
+    ./modules/starship.nix
   ];
 
   # link the configuration file in current directory to the specified location in home directory
