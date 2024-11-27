@@ -28,12 +28,12 @@
           };
 
         modules = [
-          ./configuration.nix
+          ./hosts/master/configuration.nix
           home-manager.nixosModules.home-manager
           {
             home-manager.useGlobalPkgs = true;
             home-manager.useUserPackages = true;
-            home-manager.users.lono = import ./home.nix;
+            home-manager.users.lono = import ./hosts/master/home.nix;
 
             # Optionally, use home-manager.extraSpecialArgs to pass
             # arguments to home.nix
