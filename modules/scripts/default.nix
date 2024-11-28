@@ -1,51 +1,33 @@
 {...}:
 
 {
-  home.file.".config/scripts/screenshot.sh" = {
+  home.file.".config/scripts/screenshots.sh" = {
+    source = ./screenshots.sh;
+    executable = true;
+  };
+
+  home.file.".config/scripts/wall.sh" = {
     text = ''
       #!/usr/bin/env bash
 
-      # Flags:
+      WK_FILE="$HOME/.config/.wk"
 
-      # r: region
-      # s: screen
-      #
-      # c: clipboard
-      # f: file
-      # i: interactive
+      if [ ! -f "$WK_FILE" ] ; then
+        image_dir="$HOME/Downloads"
 
-      # p: pixel
+        if [ ! -d "$image_dir" ]; then
+          echo "directory $image_dir does not exist. exiting."
+          exit 1
+        fi
 
-      if [[ $1 == rc ]]; then
-        grim -g "$(slurp -b '#000000b0' -c '#00000000')" - | wl-copy
-        notify-send 'Copied to Clipboard' Screenshot
+        random_image=$(find "$image_dir" -type f | shuf -n 1)
 
-      elif [[ $1 == rf ]]; then
-        mkdir -p ~/cave/pics/screenshots
-        filename=~/cave/pics/screenshots/$(date +%Y-%m-%d_%H-%M-%S).png
-        grim -g "$(slurp -b '#000000b0' -c '#00000000')" $filename
-        notify-send 'Screenshot Taken' $filename
+        if [ -z "$random_image" ]; then
+          echo "no files found in $image_dir. exiting."
+          exit 1
+        fi
 
-      elif [[ $1 == ri ]]; then
-        grim -g "$(slurp -b '#000000b0' -c '#00000000')" - | swappy -f -
-
-      elif [[ $1 == sc ]]; then
-        grim - | wl-copy
-        notify-send 'Copied to Clipboard' Screenshot
-
-      elif [[ $1 == sf ]]; then
-        mkdir -p ~/cave/pics/screenshots
-        filename=~/cave/pics/screenshots/$(date +%Y-%m-%d_%H-%M-%S).png
-        grim $filename
-        notify-send 'Screenshot Taken' $filename
-
-      elif [[ $1 == si ]]; then
-        grim - | swappy -f -
-
-      elif [[ $1 == p ]]; then
-        color=$(hyprpicker -a)
-        wl-copy $color
-        notify-send 'Copied to Clipboard' $color
+        swww img "$random_image"
       fi
     '';
     executable = true;
