@@ -114,7 +114,7 @@ return {
       })
     end, { desc = '[F]ind Files' })
 
-    vim.keymap.set('n', '<A-ł>', function()
+    vim.keymap.set('n', '<Ł>', function()
       builtin.find_files({ cwd = '.dev/' })
     end)
   end,
