@@ -1,6 +1,6 @@
 return {
   'hrsh7th/nvim-cmp',
-  event = { 'InsertEnter', 'CmdlineEnter' },
+  event = { 'InsertEnter' },
   dependencies = {
     -- Snippet Engine & its associated nvim-cmp source
     {
@@ -35,6 +35,8 @@ return {
     -- 'hrsh7th/cmp-cmdline',
     -- 'hrsh7th/cmp-nvim-lsp-signature-help',
     -- 'hrsh7th/cmp-nvim-lua',
+
+    { 'windwp/nvim-autopairs', config = true }
   },
   config = function()
     -- See `:help cmp`
@@ -42,7 +44,7 @@ return {
     local luasnip = require('luasnip')
     luasnip.config.setup({})
 
-    symbol_map = {
+    local symbol_map = {
       Text = "󰉿",
       Method = "󰆧",
       Function = "󰊕",
@@ -70,8 +72,11 @@ return {
       TypeParameter = "",
     }
 
-    local cmp_autopairs = require 'nvim-autopairs.completion.cmp'
+    -- did not work inside nvim-autopairs plugin spec
+    local cmp_autopairs = require('nvim-autopairs.completion.cmp')
     cmp.event:on('confirm_done', cmp_autopairs.on_confirm_done())
+    require('nvim-autopairs').get_rules('"')[1].not_filetypes = { 'lua', 'typescript' }
+    require('nvim-autopairs').get_rules("'")[1].not_filetypes = { 'lua', 'typescript' }
 
     cmp.setup {
       snippet = {
