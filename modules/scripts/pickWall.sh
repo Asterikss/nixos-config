@@ -6,6 +6,4 @@ SELECTED_IMAGE=$(find "$IMAGE_DIR" -type f -printf "%f\n" | rofi -theme purple -
 
 if [ -n "$SELECTED_IMAGE" ]; then
   swww img "$IMAGE_DIR/$SELECTED_IMAGE"
-else
-  notify-send 'No image selected'
 fi

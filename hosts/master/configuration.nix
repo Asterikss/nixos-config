@@ -199,6 +199,7 @@
       mpv
       fastfetch
       zathura
+      swayimg
 
       # screenshot utils
       grim
@@ -208,6 +209,7 @@
 
       # hyprland utils
       hyprsunset
+      hyprlock
 
       # utils
       btop

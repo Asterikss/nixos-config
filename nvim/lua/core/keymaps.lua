@@ -2,6 +2,9 @@ local function m(a, b, v)
     vim.keymap.set(a, b, v, { noremap = true })
 end
 
+vim.g.mapleader = " "
+vim.g.maplocalleader = " "
+
 m({"n", "v"}, "<Space>", "<Nop>")
 
 m("v", "y", "myy`y") -- keeps the position of the cursor after v yank
@@ -172,23 +175,6 @@ vim.api.nvim_create_user_command(
 )
 m("n", "<Leader><Leader>k", ":CopyLineAbove<CR>")
 
------- fugitive ------
-m("n", "<Leader>hg", function ()
-    if vim.bo.filetype == "fugitive" then
-        vim.cmd("x")
-    else
-        vim.cmd("G")
-    end
-end)
-
-m("n", "<Leader>hw", "<cmd>Gwrite<CR>")
-
-m("n", "<Leader>hc", ':G commit -m""<Left>')
-
-m("n", "<Leader>hu", "<cmd>G push<CR>")
-
-m({"n", "v"}, "<Leader>ha", "<cmd>Gitsign stage_hunk<CR>")
-
 ------ plugin development ------
 P = function(t)
     print(vim.inspect(t))
@@ -336,64 +322,25 @@ m("t", "<A-j>", function()
 end)
 
 -- TODO change that
--- m("t", "<A-1>", function()
---     vim.api.nvim_feedkeys("\x1b" ..
---     vim.api.nvim_replace_termcodes("<c-^>", true, false, true) ..
---     ';lua require("harpoon.term").gotoTerminal(1)\r;lua require("harpoon.term").sendCommand(1, 2)\ra\r', "m", true)
--- end)
+m("t", "<A-1>", function()
+    vim.api.nvim_feedkeys("\x1b" ..
+    vim.api.nvim_replace_termcodes("<c-^>", true, false, true) ..
+    ';lua require("harpoon.term").gotoTerminal(1)\r;lua require("harpoon.term").sendCommand(1, 2)\ra\r', "m", true)
+end)
 
 
--- ------ Telescope
--- m("n", "<Leader>f", function()
---     require("telescope.builtin").find_files(require('telescope.themes').get_dropdown {
---         previewer = false
---     })
--- end)
--- -- m({"n", "t"}, "ś", function()
--- --     require("telescope.builtin").find_files(require('telescope.themes').get_dropdown {
--- --         previewer = false
--- --     })
--- -- end)
--- 
--- m("n", "<Leader>/", function()
---     require("telescope.builtin").current_buffer_fuzzy_find(require("telescope.themes").get_dropdown {
---         windblend = 10,
---         previewer = false,
---     })
--- end)
--- 
--- m('n', '<leader>sc', function()
---     require("telescope.builtin").find_files({ cwd = vim.fn.stdpath 'config' })
--- end)
--- 
--- m('n', '<leader>sn', function()
---     require("telescope.builtin").find_files({ cwd = '/home/lono/notes' })
--- end)
--- 
--- 
--- m('n', '<A-ł>', function() -- used to be leader N
---     require("telescope.builtin").find_files({ cwd = '.dev/' })
--- end)
--- m('t', 'ł', "<CMD>e .dev/notes.txt<CR>") -- used to be leader n
--- m('n', 'ł', function () -- m('t', 'ł', "<CMD>e .dev/notes.txt<CR>")
---     if vim.fn.expand('%') ~= '.dev/notes.txt' then
---         vim.cmd('e .dev/notes.txt')
---     else
---         local prev_buf_name = vim.fn.bufname('#')
---         vim.cmd('b #')
---         if prev_buf_name:match('^term') then
---             vim.cmd('startinsert')
---         end
---     end
--- end)
--- 
--- m("n", "<Leader><Leader>f", require("telescope.builtin").find_files)
--- m("n", "<Leader>b", require("telescope.builtin").buffers)
--- m("n", "<Leader>gg", require("telescope.builtin").live_grep)
--- m("n", "<Leader>gh", require("telescope.builtin").help_tags)
--- m("n", "<Leader>?", require("telescope.builtin").oldfiles)
--- m("n", "<Leader>sd", require("telescope.builtin").diagnostics)
--- m("n", "<Leader>sw", require("telescope.builtin").grep_string)
+m('t', 'ł', "<CMD>e .dev/notes.txt<CR>")
+m('n', 'ł', function ()
+    if vim.fn.expand('%') ~= '.dev/notes.txt' then
+        vim.cmd('e .dev/notes.txt')
+    else
+        local prev_buf_name = vim.fn.bufname('#')
+        vim.cmd('b #')
+        if prev_buf_name:match('^term') then
+            vim.cmd('startinsert')
+        end
+    end
+end)
 
 ----- Diagnostic keymaps
 vim.keymap.set('n', '<leader>e', vim.diagnostic.open_float, { desc = 'Open floating diagnostic message' })
