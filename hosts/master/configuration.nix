@@ -227,6 +227,7 @@
       fd
       pyright
       lua-language-server
+      stylua
       # rust-analyzer-unwrapped
       # nodejs_22
       # gh

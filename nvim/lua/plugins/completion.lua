@@ -36,7 +36,7 @@ return {
     -- 'hrsh7th/cmp-nvim-lsp-signature-help',
     -- 'hrsh7th/cmp-nvim-lua',
 
-    { 'windwp/nvim-autopairs', config = true }
+    { 'windwp/nvim-autopairs', config = true },
   },
   config = function()
     -- See `:help cmp`
@@ -45,31 +45,31 @@ return {
     luasnip.config.setup({})
 
     local symbol_map = {
-      Text = "󰉿",
-      Method = "󰆧",
-      Function = "󰊕",
-      Constructor = "",
-      Field = "󰜢",
-      Variable = "󰀫",
-      Class = "󰠱",
-      Interface = "",
-      Module = "",
-      Property = "󰜢",
-      Unit = "󰑭",
-      Value = "󰎠",
-      Enum = "",
-      Keyword = "󰌋",
-      Snippet = "",
-      Color = "󰏘",
-      File = "󰈙",
-      Reference = "󰈇",
-      Folder = "󰉋",
-      EnumMember = "",
-      Constant = "󰏿",
-      Struct = "󰙅",
-      Event = "",
-      Operator = "󰆕",
-      TypeParameter = "",
+      Text = '󰉿',
+      Method = '󰆧',
+      Function = '󰊕',
+      Constructor = '',
+      Field = '󰜢',
+      Variable = '󰀫',
+      Class = '󰠱',
+      Interface = '',
+      Module = '',
+      Property = '󰜢',
+      Unit = '󰑭',
+      Value = '󰎠',
+      Enum = '',
+      Keyword = '󰌋',
+      Snippet = '',
+      Color = '󰏘',
+      File = '󰈙',
+      Reference = '󰈇',
+      Folder = '󰉋',
+      EnumMember = '',
+      Constant = '󰏿',
+      Struct = '󰙅',
+      Event = '',
+      Operator = '󰆕',
+      TypeParameter = '',
     }
 
     -- did not work inside nvim-autopairs plugin spec
@@ -85,7 +85,7 @@ return {
         end,
       },
       completion = { completeopt = 'menu,menuone,noinsert' },
-      experimental = { ghost_text = true, },
+      experimental = { ghost_text = true },
       window = {
         -- completion = cmp.config.window.bordered(),
         documentation = cmp.config.window.bordered(),
@@ -165,9 +165,9 @@ return {
             luasnip = '[Lsnp]',
             buffer = '[Buff]',
             path = '[Path]',
-            cmdline = '[Cmd]',
             otter = '[🦦]',
-            treesitter = '[Tree]'
+            treesitter = '[Tree]',
+            -- cmdline = '[Cmd]',
             -- nvim_lua = "[Lua]",
             -- latex_symbols = "[LaTeX]",
           })[entry.source.name]

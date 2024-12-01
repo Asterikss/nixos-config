@@ -1,6 +1,6 @@
 return {
   'numToStr/Comment.nvim',
-  event = { "BufReadPost", "BufNewFile" },
+  event = { 'BufReadPost', 'BufNewFile' },
   opts = {
     toggler = {
       line = 'q',

@@ -1,8 +1,8 @@
 return {
-  "nvim-treesitter/nvim-treesitter",
+  'nvim-treesitter/nvim-treesitter',
   dev = true,
-  event = { "BufReadPost", "BufNewFile" },
-  main = "nvim-treesitter.configs",
+  event = { 'BufReadPost', 'BufNewFile' },
+  main = 'nvim-treesitter.configs',
   opts = {
     auto_install = false,
     ensure_installed = {},
@@ -17,15 +17,15 @@ return {
       enable = false,
       disable = {},
       keymaps = {
-        init_selection = "gnn",
-        node_decremental = "grm",
-        node_incremental = "grn",
-        scope_incremental = "grc"
+        init_selection = 'gnn',
+        node_decremental = 'grm',
+        node_incremental = 'grn',
+        scope_incremental = 'grc',
       },
     },
     indent = {
       enable = true,
-      disable = { "python" },
+      disable = { 'python' },
     },
   },
   -- event = { "BufReadPost", "BufNewFile" },

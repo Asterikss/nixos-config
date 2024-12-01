@@ -1,6 +1,6 @@
 return {
   'lewis6991/gitsigns.nvim',
-  event = { "BufReadPost" },
+  event = { 'BufReadPost' },
   lazy = true,
   opts = {
     signs = {
@@ -9,7 +9,7 @@ return {
       delete = { text = '_' },
       topdelete = { text = '‾' },
       changedelete = { text = '~' },
-      untracked    = { text = '┆' },
+      untracked = { text = '┆' },
     },
     on_attach = function(bufnr)
       local gitsigns = require 'gitsigns'

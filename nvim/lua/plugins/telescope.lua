@@ -6,19 +6,19 @@ return {
     'nvim-lua/plenary.nvim',
     {
       'nvim-telescope/telescope-fzf-native.nvim',
-      build = 'cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release'
+      build = 'cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release',
     },
     { 'nvim-telescope/telescope-ui-select.nvim' },
     -- { 'nvim-tree/nvim-web-devicons', enabled = vim.g.have_nerd_font },
   },
   config = function()
-    local actions = require("telescope.actions")
+    local actions = require('telescope.actions')
     require('telescope').setup {
       defaults = {
         mappings = {
           i = {
             ['<c-enter>'] = 'to_fuzzy_refine',
-            ["<Esc>"] = actions.close,
+            ['<Esc>'] = actions.close,
             -- ["<C-K>"] = actions.select_default,
             -- ["<C-h>"] = actions.cycle_history_next,
           },
@@ -58,17 +58,18 @@ return {
       local current_dir
       local cwd = vim.fn.getcwd()
       -- If the buffer is not associated with a file, return nil
-      if current_file == "" then
+      if current_file == '' then
         current_dir = cwd
       else
         -- Extract the directory from the current file's path
-        current_dir = vim.fn.fnamemodify(current_file, ":h")
+        current_dir = vim.fn.fnamemodify(current_file, ':h')
       end
 
       -- Find the Git root directory from the current file's path
-      local git_root = vim.fn.systemlist("git -C " .. vim.fn.escape(current_dir, " ") .. " rev-parse --show-toplevel")[1]
+      local git_root =
+        vim.fn.systemlist('git -C ' .. vim.fn.escape(current_dir, ' ') .. ' rev-parse --show-toplevel')[1]
       if vim.v.shell_error ~= 0 then
-        print("Not a git repository. Searching on current working directory")
+        print('Not a git repository. Searching on current working directory')
         return cwd
       end
       return git_root
@@ -79,7 +80,7 @@ return {
       local git_root = find_git_root()
       if git_root then
         builtin.live_grep({
-          search_dirs = {git_root},
+          search_dirs = { git_root },
         })
       end
     end
@@ -108,9 +109,9 @@ return {
       builtin.find_files({ cwd = '~/cave/notes' })
     end, { desc = '[S]search [N]otes' })
 
-    vim.keymap.set("n", "<Leader>f", function()
+    vim.keymap.set('n', '<Leader>f', function()
       builtin.find_files(require('telescope.themes').get_dropdown {
-        previewer = false
+        previewer = false,
       })
     end, { desc = '[F]ind Files' })
 

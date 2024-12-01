@@ -138,7 +138,7 @@ return {
               callSnippet = 'Replace',
             },
             hint = {
-              enable = true
+              enable = true,
             },
             -- You can toggle below to ignore Lua_LS's noisy `missing-fields` warnings
             -- diagnostics = { disable = { 'missing-fields' } },
@@ -167,24 +167,23 @@ return {
       require('lspconfig')[server_name].setup(server)
     end
 
-
     -- You can add other tools here that you want Mason to install
     -- for you, so that they are available from within Neovim.
     local ensure_installed = vim.tbl_keys(servers or {})
     local extra_tools = {
-        -- 'stylua', -- Used to format Lua code
+      -- 'stylua', -- Used to format Lua code
     }
     -- vim.list_extend(ensure_installed, {
     --   'stylua', -- Used to format Lua code
     -- })
 
     if vim.g.system_id == 'nixos' then
-      print("In nixos setup")
+      print('In nixos setup')
       for _, server_name in pairs(ensure_installed) do
         setup_server(server_name)
       end
     else
-      print("Not nixos setup")
+      print('Not nixos setup')
       vim.list_extend(ensure_installed, extra_tools)
       require('mason-tool-installer').setup { ensure_installed = ensure_installed }
       require('mason-lspconfig').setup { handlers = { setup_server } }

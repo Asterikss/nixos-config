@@ -9,8 +9,8 @@ return {
       function()
         vim.cmd('NoNeckPain')
       end,
-      desc = 'no-neck-pain'
-    }
+      desc = 'no-neck-pain',
+    },
   },
   opts = {
     width = 130,
