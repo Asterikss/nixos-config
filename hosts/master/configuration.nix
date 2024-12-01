@@ -216,6 +216,7 @@
       wget
       brightnessctl
       pavucontrol
+      fzf
 
       # fonts
       font-awesome
@@ -224,12 +225,21 @@
       ripgrep
       black
       fd
-      cmake
-      # lua-language-server
+      pyright
+      lua-language-server
       # rust-analyzer-unwrapped
       # nodejs_22
       # gh
+
+      # build-essential
+      cmake
+      gnumake
+      gcc
     ])
+    # gzip
+    # tar(1) or gtar(1
+    # curl(1) or wget(1)
+    # unzip(1
 
     ++
 
