@@ -1,8 +1,9 @@
 { config, ... }:
 
 {
-  home.file.".config/hypr/hyprland.conf" = {
+  home.file.".config/hypr/" = {
     source = config.lib.file.mkOutOfStoreSymlink
-      "${config.home.homeDirectory}/cave/nixos-config/modules/hyprland/hyprland.conf";
+      "${config.home.homeDirectory}/cave/nixos-config/modules/hyprland/hypr/";
+    recursive = true;
   };
 }
