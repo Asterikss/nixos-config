@@ -1,7 +1,7 @@
 return {
   {
     'navarasu/onedark.nvim',
-    disabled = true,
+    enabled = false,
     -- priority = 1000,
     -- config = function()
     --   -- vim.cmd.colorscheme 'onedark'
@@ -22,6 +22,6 @@ return {
   },
   {
     'savq/melange',
-    disabled = true,
+    enabled = false,
   },
 }
