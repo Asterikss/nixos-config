@@ -122,7 +122,7 @@ return {
             luasnip.expand_or_jump()
           end
         end, { 'i', 's' }),
-        ['<C-h>'] = cmp.mapping(function()
+        ['<C-j>'] = cmp.mapping(function() -- <C-h> messed up my ctrl backspace mapping
           if luasnip.locally_jumpable(-1) then
             luasnip.jump(-1)
           end
@@ -132,11 +132,6 @@ return {
         --    https://github.com/L3MON4D3/LuaSnip?tab=readme-ov-file#keymaps
       },
       sources = {
-        -- {
-        --   name = 'lazydev',
-        --   -- set group index to 0 to skip loading LuaLS completions as lazydev recommends it
-        --   group_index = 0,
-        -- },
         { name = 'nvim_lsp' },
         { name = 'luasnip' },
         { name = 'buffer' }, -- keyword_length = 3, max_item_count = 3
@@ -146,16 +141,21 @@ return {
         -- { name = 'cmdline' },
         -- { name = 'nvim_lua' },
         -- { name = 'nvim_lsp_signature_help' },
+        -- {
+        --   name = 'lazydev',
+        --   -- set group index to 0 to skip loading LuaLS completions as lazydev recommends it
+        --   group_index = 0,
+        -- },
       },
       formatting = {
         format = function(entry, vim_item)
           vim_item.kind = string.format('%s', symbol_map[vim_item.kind])
           -- vim_item.kind = string.format('%s %s', kind_icons[vim_item.kind], vim_item.kind) -- This concatonates the icons with the name of the item kind
-          -- Source
+          -- Sources
           vim_item.menu = ({
             nvim_lsp = '[Lsp]',
             luasnip = '[Lsnp]',
-            buffer = '[Buff]',
+            buffer = '[Buf]',
             path = '[Path]',
             otter = '[🦦]',
             treesitter = '[Tree]',
