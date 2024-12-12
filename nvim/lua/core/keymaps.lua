@@ -248,7 +248,7 @@ m('n', '<A-0>', '<cmd>lua require("harpoon.ui").nav_file(5)<CR>')
 m('n', '<A-a>', '<cmd>lua require("harpoon.ui").toggle_quick_menu()<CR>')
 m('n', '<Leader><Leader>m', '<cmd>lua require("harpoon.cmd-ui").toggle_quick_menu()<CR>')
 
-m('n', '<A-n>', function() -- goes to the beginning of the command line. Always in insert mode
+m('n', '<A-h>', function() -- goes to the beginning of the command line. Always in insert mode
   if vim.bo.buftype == 'terminal' then
     -- vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes("<C-^>", true, false, true), "m", true) -- change to :e %
     vim.cmd('b #')
@@ -258,7 +258,7 @@ m('n', '<A-n>', function() -- goes to the beginning of the command line. Always 
   end
 end)
 
-m('n', '<A-N>', function() -- same, but does not change the original location of the cursor. Alsways in normal mode
+m('n', '<A-H>', function() -- same, but does not change the original location of the cursor. Alsways in normal mode
   if vim.bo.buftype == 'terminal' then
     -- vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes("<C-^>", true, false, true), "m", true)
     vim.cmd('e #')
@@ -337,7 +337,7 @@ m('t', 'ę', '<cmd>lua require("harpoon.ui").nav_file(3)<CR>')
 m('t', '<A-9>', '<cmd>lua require("harpoon.ui").nav_file(4)<CR>')
 m('t', '<A-0>', '<cmd>lua require("harpoon.ui").nav_file(5)<CR>')
 
-m('t', '<A-n>', function()
+m('t', '<A-h>', function()
   vim.cmd('b #') -- vim.api.nvim_feedkeys("\x1b" .. vim.api.nvim_replace_termcodes("<C-^>", true, false, true), "m", true)
   vim.cmd('normal! zz')
 end)
