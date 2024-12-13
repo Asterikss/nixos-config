@@ -12,6 +12,7 @@
     ../../modules/swappy
     ../../modules/scripts
     ../../modules/hyprland
+    ../../modules/wezterm
   ];
 
   # set cursor size and dpi for 4k monitor
