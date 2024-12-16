@@ -19,6 +19,7 @@ return {
         'vimdoc',
         'bash',
         'yaml',
+        'sql',
       })
     end
     require('nvim-treesitter.configs').setup({
