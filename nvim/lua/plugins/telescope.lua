@@ -107,8 +107,8 @@ return {
     end, { desc = '[S]earch Neovim [C]onfig' })
 
     vim.keymap.set('n', '<leader>sn', function()
-      builtin.find_files({ cwd = '~/cave/notes' })
-    end, { desc = '[S]search [N]otes' })
+      builtin.find_files({ cwd = '~/cave/dev_notes' })
+    end, { desc = '[S]search dev_[N]otes' })
 
     vim.keymap.set('n', '<Leader>f', function()
       builtin.find_files(require('telescope.themes').get_dropdown {
@@ -116,7 +116,7 @@ return {
       })
     end, { desc = '[F]ind Files' })
 
-    vim.keymap.set('n', '<Ł>', function()
+    vim.keymap.set('n', 'Ł', function()
       builtin.find_files({ cwd = '.dev/' })
     end)
   end,
