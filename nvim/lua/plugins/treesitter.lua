@@ -17,6 +17,7 @@ return {
         'markdown_inline',
         'vim',
         'vimdoc',
+        'regex',
         'bash',
         'yaml',
         'sql',
@@ -44,7 +45,7 @@ return {
       },
       indent = {
         enable = true,
-        disable = { 'python' },
+        disable = { 'markdown', 'python' },
       },
     })
   end,
