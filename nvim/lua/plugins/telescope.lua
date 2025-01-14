@@ -45,7 +45,7 @@ return {
     vim.keymap.set('n', '<leader><leader>f', builtin.find_files, { desc = '[F]ind [F]iles' })
     vim.keymap.set('n', '<leader>ss', builtin.builtin, { desc = '[S]earch [S]elect Telescope' })
     vim.keymap.set('n', '<leader>sw', builtin.grep_string, { desc = '[S]earch current [W]ord' })
-    vim.keymap.set('n', '<leader>sg', builtin.live_grep, { desc = '[S]earch by [G]rep' })
+    vim.keymap.set('n', '<leader>sG', builtin.live_grep, { desc = '[S]earch by [G]rep' })
     vim.keymap.set('n', '<leader>sd', builtin.diagnostics, { desc = '[S]earch [D]iagnostics' })
     vim.keymap.set('n', '<leader>sr', builtin.resume, { desc = '[S]earch [R]esume' })
     vim.keymap.set('n', '<leader>s.', builtin.oldfiles, { desc = '[S]earch Recent Files ("." for repeat)' })
@@ -87,6 +87,45 @@ return {
     end
 
     vim.api.nvim_create_user_command('LiveGrepGitRoot', live_grep_git_root, {})
+
+    local function live_multigrep()
+      local finder = require('telescope.finders').new_async_job {
+        command_generator = function(prompt)
+          if not prompt or prompt == '' then
+            return nil
+          end
+
+          local pieces = vim.split(prompt, '  ')
+          local args = { 'rg' }
+          if pieces[1] then
+            table.insert(args, '-e')
+            table.insert(args, pieces[1])
+          end
+
+          if pieces[2] then
+            table.insert(args, '-g')
+            table.insert(args, pieces[2])
+          end
+
+          return vim.tbl_flatten {
+            args,
+            { '--color=never', '--no-heading', '--with-filename', '--line-number', '--column', '--smart-case' },
+          }
+        end,
+        entry_maker = require('telescope.make_entry').gen_from_vimgrep({}),
+        cwd = vim.uv.cwd(),
+      }
+
+      require('telescope.pickers').new({}, {
+        debounce = 100,
+        prompt_title = '❅  Multi Grep ❅',
+        finder = finder,
+        previewer = require('telescope.config').values.grep_previewer({}),
+        sorter = require('telescope.sorters').empty(),
+      }):find()
+    end
+
+    vim.keymap.set('n', '<leader>sg', live_multigrep, { desc = '[S]earch custom [G]rep' })
 
     vim.keymap.set('n', '<leader>/', function()
       builtin.current_buffer_fuzzy_find(require('telescope.themes').get_dropdown {
