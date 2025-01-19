@@ -41,7 +41,7 @@ return {
 
     local builtin = require 'telescope.builtin'
     vim.keymap.set('n', '<leader>sh', builtin.help_tags, { desc = '[S]earch [H]elp' })
-    vim.keymap.set('n', '<leader>sk', builtin.keymaps, { desc = '[S]earch [K]eymaps' })
+    vim.keymap.set('n', '<leader>sK', builtin.keymaps, { desc = '[S]earch [K]eymaps' })
     vim.keymap.set('n', '<leader><leader>f', builtin.find_files, { desc = '[F]ind [F]iles' })
     vim.keymap.set('n', '<leader>ss', builtin.builtin, { desc = '[S]earch [S]elect Telescope' })
     vim.keymap.set('n', '<leader>sw', builtin.grep_string, { desc = '[S]earch current [W]ord' })
@@ -146,8 +146,20 @@ return {
     end, { desc = '[S]earch Neovim [C]onfig' })
 
     vim.keymap.set('n', '<leader>sn', function()
-      builtin.find_files({ cwd = '~/cave/dev_notes' })
-    end, { desc = '[S]search dev_[N]otes' })
+      builtin.find_files({ cwd = '~/cave/vault/' })
+    end, { desc = '[S]search dev_[n]otes' })
+
+    vim.keymap.set('n', '<leader>sN', function()
+      builtin.find_files({ cwd = '~/cave/notes_proj/' })
+    end, { desc = '[S]search [N]otes' })
+
+    vim.keymap.set('n', '<leader>st', function()
+      builtin.find_files({ cwd = '~/cave/todos/' })
+    end, { desc = '[S]search [N]otes' })
+
+    vim.keymap.set('n', '<leader>sk', function()
+      builtin.find_files({ cwd = '~/cave/kkk/' })
+    end, { desc = '[S]search [N]otes' })
 
     vim.keymap.set('n', '<Leader>f', function()
       builtin.find_files(require('telescope.themes').get_dropdown {
