@@ -82,11 +82,11 @@ m('n', 'J', 'mzJ`z')
 m('n', '<', '<<') -- delay like there is multiple keymaps that start with "<" and does not even show up in Telescope keymaps
 m('n', '>', '>>')
 
-m('n', 'p', "<cmd>pu<CR>V'[=") -- paste under / over and automatically allign using "=". Also see :h ]p and [P
-m('n', '<A-p>', '<cmd>pu<CR>')
-m('n', 'P', "<cmd>pu!<CR>V']=")
-m('n', '<A-P>', '<cmd>pu!<CR>')
-m('x', 'p', '"_dP') -- paste without trashing the clippboard
+m('n', '<A-p>', "<cmd>pu<CR>V'[=") -- paste under / over and automatically allign using "=". Also see :h ]p and [P
+m('n', 'p', '<cmd>pu<CR>')
+m('n', '<A-P>', "<cmd>pu!<CR>V']=")
+m('n', 'P', '<cmd>pu!<CR>')
+-- m('x', 'p', '"_dP') -- paste without trashing the clippboard. Not needed when using Ctrl-c
 
 m('n', 't', 'yiw')
 m('n', 'T', 'viw"_dP')
