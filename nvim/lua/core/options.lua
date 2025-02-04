@@ -8,7 +8,7 @@ o.ignorecase = true
 o.smartcase = true
 o.scrolloff = 8
 o.wrap = false
-o.termguicolors = true -- set t_Co=256  set term=xterm-256color
+o.termguicolors = true
 o.splitbelow = true
 o.splitright = true
 o.lazyredraw = true
@@ -17,29 +17,21 @@ o.textwidth = 0
 o.sidescroll = 3
 o.timeoutlen = 700
 o.background = 'dark'
-o.clipboard = 'unnamedplus'
 o.signcolumn = 'yes'
 o.syntax = 'on'
 o.fileencoding = 'UTF-8'
 o.completeopt = 'menuone,noselect,preview'
-o.shortmess:append 'IW' -- disable nvim intro
+o.shortmess:append 'IW'
 o.jumpoptions:append 'stack'
 o.inccommand = 'split'
 o.virtualedit = 'block'
 o.spelllang = { 'en', 'pl' }
--- o.spell = true
--- o.colorcolumn = '100'
--- o.undofile = true
--- o.concealcursor = "nc"
--- o.textwidth = 80
--- o.formatoptions:append('t')
-
+o.foldlevel = 3
 o.ruler = false
 o.cmdheight = 0
 o.showmode = false
 o.laststatus = 0
 o.showcmdloc = 'tabline'
-
 o.smarttab = true
 o.expandtab = true
 o.tabstop = 2
@@ -47,17 +39,29 @@ o.softtabstop = 0
 o.shiftwidth = 0
 o.autoindent = true
 o.smartindent = true
-
 o.list = true
-vim.opt.listchars = {
-  trail = '»', -- trailing spaces ▷ ⦿ ➤ ⊙ • ⋙  ⫸  ⇶
-  tab = '⫸•', -- tabs »·
-  -- space = '·', -- spaces
-  -- eol = '↴', -- end of line
-  -- extends = '→', -- overflowing text
-  -- precedes = '←' -- precedes the window
+o.listchars = {
+  trail = '»',
+  tab = '⫸_',
 }
-vim.cmd [[highlight Whitespace ctermbg=Brown ctermfg=Black guibg=Brown guifg=Black]]
+
+vim.g.markdown_folding = 1
+
+if vim.fn.has('wsl') then
+  vim.g.clipboard = {
+    name = 'win32yank',
+    copy = {
+      ["+"] = 'win32yank.exe -i --crlf',
+      ["*"] = 'win32yank.exe -i --crlf',
+    },
+    paste = {
+      ["+"] = 'win32yank.exe -o --lf',
+      ["*"] = 'win32yank.exe -o --lf',
+    },
+    cache_enabled = 0,
+  }
+end
+o.clipboard = 'unnamedplus'
 
 vim.api.nvim_create_autocmd('InsertEnter', {
   pattern = '*',
