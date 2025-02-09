@@ -1,8 +1,13 @@
+vim.cmd [[highlight Whitespace ctermbg=Brown ctermfg=Black guibg=Brown guifg=Black]]
+-- vim.api.nvim_set_hl(0, 'CustomBullet', { fg = '#8263FF' })
+-- vim.api.nvim_set_hl(0, 'CustomBullet', { fg = '#C7AD4D' })
+
 vim.api.nvim_set_hl(0, 'TodoOnHold', { fg = '#A19677' })
 vim.api.nvim_set_hl(0, 'TodoUrgent', { fg = '#C7555D' })
 vim.api.nvim_set_hl(0, 'TodoDoLater', { fg = '#CE9904' })
 vim.api.nvim_set_hl(0, 'TodoKindOfDone', { fg = '#84C41E' }) -- 53B9D5
 vim.api.nvim_set_hl(0, 'TodoChecked', { fg = '#6CEA65'}) -- ok
+vim.api.nvim_set_hl(0, 'TodoImportant', { fg = '#FFC800' }) -- Mikado yellow
 -- vim.api.nvim_set_hl(0, 'TodoChecked', { fg = '#7BD475'}) -- ok
 
 vim.api.nvim_set_hl(0, 'TodoInProgress', { fg = '#209FBB' })
@@ -17,7 +22,7 @@ vim.api.nvim_set_hl(0, 'TodoUncertain', { fg = '#692CCB' })
 vim.api.nvim_set_hl(0, 'TodoCanceled', { fg = '#888889' })
 
 -- 53B9D5 Aero (kind of done, unchecked, in progress)
--- 926D09 Bolden Brown
+-- 926D09 Golden Brown
 -- 5587C7 Silver Lake Blue
 -- 2EBA5A Dark Pastel Green
 -- 4E2F8D Tekhelet Dark Purple
@@ -35,3 +40,4 @@ vim.api.nvim_set_hl(0, 'TodoCanceled', { fg = '#888889' })
 -- AFA3FF Tropical indigo
 -- 888889 Battleship gray
 -- B07DD9 Lavender (floral)
+-- FFC800 Mikado yellow
