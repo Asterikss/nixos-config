@@ -19,6 +19,9 @@ return {
           i = {
             ['<c-enter>'] = 'to_fuzzy_refine',
             ['<Esc>'] = actions.close,
+            [''] = function ()
+              vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes('<C-w>', true, false, true), 'i', true)
+            end,
             -- ["<C-K>"] = actions.select_default,
             -- ["<C-h>"] = actions.cycle_history_next,
           },
