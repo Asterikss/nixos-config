@@ -8,6 +8,9 @@ return {
   ---@type render.md.UserConfig
   opts = {
     render_modes = true,
+    anti_conceal = {
+      enabled = false,
+    },
     checkbox = {
       unchecked = {
         icon = '󰄱',
