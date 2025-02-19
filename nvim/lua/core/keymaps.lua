@@ -19,8 +19,7 @@ m('n', '<A-D>', '"_d')
 m('v', '>', '>gv')
 m('v', '<', '<gv')
 
-m('n', '<Leader><Leader>q', 'gqap') -- formatting text
-m('v', '<Leader><Leader>q', 'gq')
+m('n', '<A-q>', 'gqip')
 
 m('n', 'n', 'nzz')
 m('n', 'N', 'Nzz')
@@ -106,7 +105,6 @@ m('c', '<C-n>', '<Down>')
 m('i', '<A-=>', ' == ')
 
 m('n', '-', '<CMD>Oil<CR>')
--- m("n", "-", require('oil').toggle_float)
 
 m({ 'n', 'i' }, '<C-e>', function()
   vim.cmd('wa')
@@ -147,7 +145,12 @@ m('n', 'gT', function() -- open current file in a new tab
   vim.cmd('normal! `a')
 end)
 
-m('n', '<Leader>o', function() -- format file based on the extension
+m('n', '<Leader><Leader>o', function() -- toggle autoformat
+  vim.g.enable_autoformat = not vim.g.enable_autoformat
+  vim.notify("Autoformat " .. (vim.g.enable_autoformat and "Enabled" or "Disabled"), vim.log.levels.INFO)
+end)
+
+m('n', '<Leader><Leader>O', function() -- format file based on the extension
   local file_type = vim.bo.filetype
   vim.cmd('w')
   if file_type == 'python' then
