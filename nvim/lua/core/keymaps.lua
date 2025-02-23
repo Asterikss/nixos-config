@@ -12,8 +12,9 @@ m({ 'n', 'v' }, ';', ':')
 m('n', ':', ';')
 
 m({ 'n', 'x' }, 'x', '"_x') -- Prevent x from overwriting clippboard
-m('v', '<A-d>', '"_d')
-m('n', '<A-d>', '"_dd')
+m('n', 'D', '"_dd')
+m('v', 'D', '"_d')
+m('n', '<A-d>', 'dd')
 m('n', '<A-D>', '"_d')
 
 m('v', '>', '>gv')
@@ -92,7 +93,9 @@ m('n', 'T', 'viw"_dP')
 m('n', '<A-t>', 'yiW')
 m('n', '<A-T>', 'viW"_dP')
 
-m('n', '<Leader><Leader>Q', 'q') -- q is taken for commenting
+m('n', '<Leader><Leader>Q', function()
+  vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes('q', true, false, true), 'n', true)
+end)
 
 m('n', 'gt', '<cmd>vsp | lua vim.lsp.buf.definition()<CR>')
 
