@@ -13,6 +13,7 @@
     ../../modules/scripts
     ../../modules/hyprland
     ../../modules/wezterm
+    ../../modules/ruff
   ];
 
   # set cursor size and dpi for 4k monitor
