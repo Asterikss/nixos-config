@@ -217,6 +217,8 @@
       brightnessctl
       pavucontrol
       fzf
+      alsa-utils
+      syncthing
 
       # fonts
       font-awesome
