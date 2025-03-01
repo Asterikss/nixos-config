@@ -11,6 +11,11 @@
     executable = true;
   };
 
+  home.file.".config/scripts/setup_dev.sh" = {
+    source = ./setup_dev.sh;
+    executable = true;
+  };
+
   home.file.".config/scripts/wall.sh" = {
     text = ''
       #!/usr/bin/env bash

@@ -30,6 +30,7 @@
       "p" = "python3";
       "l" = "ls";
       "cc" = "cd ~/cave/";
+      "linkd" = "~/.config/scripts/setup_dev.sh";
 
       # NixOS
       "reb" = "sudo nixos-rebuild switch --flake ~/cave/nixos-config";
