@@ -25,8 +25,9 @@
       "h" = "nvim .";
       "S" = "v -S .dev/Session.vim";
       "n" = "nvim .dev/notes.txt";
-      "a" = "source ~/.scripts/sessionizer_a";
-      "s" = "source ~/.scripts/sessionizer_s";
+      "a" = "source ~/.config/scripts/jump.fish a";
+      "s" = "source ~/.config/scripts/jump.fish s";
+      "q" = "source ~/.config/scripts/jump.fish q";
       "p" = "python3";
       "l" = "ls";
       "cc" = "cd ~/cave/";

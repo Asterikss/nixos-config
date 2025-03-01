@@ -16,6 +16,11 @@
     executable = true;
   };
 
+  home.file.".config/scripts/jump.fish" = {
+    source = ./jump.fish;
+    executable = true;
+  };
+
   home.file.".config/scripts/wall.sh" = {
     text = ''
       #!/usr/bin/env bash
