@@ -15,6 +15,8 @@
     ../../modules/wezterm
     ../../modules/ruff
     ../../modules/wlogout
+    ../../modules/librewolf
+    ../../modules/swaylock
   ];
 
   # set cursor size and dpi for 4k monitor
