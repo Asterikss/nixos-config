@@ -1,4 +1,4 @@
-{ config, ... }:
+{...}:
 
 {
   programs.wlogout = {
@@ -6,7 +6,7 @@
     layout = [
       {
         "label" = "lock";
-        "action" = "hyprlock";
+        "action" = "swaylock";
         "text" = "Lock";
         "keybind" = "l";
       }
@@ -70,41 +70,44 @@
         border-color: black;
         text-decoration-color: #FFFFFF;
         color: #FFFFFF;
-         background-color: #1E1E1E;
-         border-style: solid;
-         border-width: 1px;
-         background-repeat: no-repeat;
-         background-position: center;
-         background-size: 25%;
+        /* background-color: #1E1E1E; */
+        background-color: #3700B3;
+        border-style: solid;
+        border-width: 1px;
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: 25%;
       }
 
-      button:focus, button:active, button:hover {
-        background-color: #3700B3;
-        outline-style: none;
+      /* button:focus*/
+      button:hover, button:active {
+         /* background-color: #3700B3; */
+         background-color: #154c79;
+         outline-style: none;
       }
 
       #lock {
-        background-image: image(url("${config.home.homeDirectory}/.config/wlogout/assets/skeleton_heroes.png"));
+        background-image: image(url("assets/skeleton_heroes.png"));
       }
 
       #logout {
-        background-image: image(url("${config.home.homeDirectory}/.config/wlogout/assets/behemoth_heroes.png"));
+        background-image: image(url("assets/behemoth_heroes.png"));
       }
 
       #suspend {
-        background-image: image(url("${config.home.homeDirectory}/.config/wlogout/assets/a1.png"));
+        background-image: image(url("assets/a1.png"));
       }
 
       #hibernate {
-        background-image: image(url("${config.home.homeDirectory}/.config/wlogout/assets/a1_mirror.png"));
+        background-image: image(url("assets/a1_mirror.png"));
       }
 
       #shutdown {
-        background-image: image(url("${config.home.homeDirectory}/.config/wlogout/assets/skeleton_heroes.png"));
+        background-image: image(url("assets/skeleton_heroes.png"));
       }
 
       #reboot {
-        background-image: image(url("${config.home.homeDirectory}/.config/wlogout/assets/zhdun.png"));
+        background-image: image(url("assets/zhdun.png"));
       }
     '';
   };

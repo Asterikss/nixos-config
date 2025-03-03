@@ -1,0 +1,7 @@
+show-failed-attempts
+ignore-empty-password
+disable-caps-lock-text
+image=$HOME/cave/walls/leaf_lockscreen.jpg
+# indicator-caps-lock
+# indicator-radius 0
+# indicator-thickness 0
