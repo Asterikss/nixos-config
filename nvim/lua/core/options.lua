@@ -47,7 +47,7 @@ o.listchars = {
 
 vim.g.markdown_folding = 1
 
-if vim.fn.has('wsl') then
+if vim.fn.system('uname -r'):find('WSL') then
   vim.g.clipboard = {
     name = 'win32yank',
     copy = {
