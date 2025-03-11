@@ -192,6 +192,55 @@ end)
 m({ 'n', 't' }, 'X', '<Esc><cmd>wa<CR><cmd>qa<CR>')
 m({ 'n', 't' }, '<A-X>', '<Esc><cmd>wa<CR><cmd>mks! .dev/Session.vim<CR><cmd>qa<CR>')
 
+vim.keymap.set('n', '<CR>', function()
+  if vim.bo.filetype ~= 'markdown' then
+    vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes('<CR>', true, false, true), 'n', true)
+    return
+  end
+
+  local line = vim.api.nvim_get_current_line()
+  local s, bracket_pos = line:find('^%s*%- %[')
+  if not s then
+    vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes('<CR>', true, false, true), 'n', true)
+  end
+
+  local row = vim.api.nvim_win_get_cursor(0)[1]
+  local marker_pos = bracket_pos + 1
+  local marker = line:sub(marker_pos, marker_pos)
+  local new_marker
+
+  local count = vim.v.count -- retrieves the count provided before the keypress
+  if count and count > 0 then
+    if count == 1 then
+      new_marker = '-'
+    elseif count == 2 then
+      new_marker = '>'
+    elseif count == 3 then
+      new_marker = '='
+    elseif count == 4 then
+      new_marker = '_'
+    elseif count == 5 then
+      new_marker = '!'
+    elseif count == 6 then
+      new_marker = '*'
+    elseif count == 7 then
+      new_marker = '?'
+    elseif count == 7 then
+      new_marker = '~'
+    end
+  else
+    if marker == ' ' or marker == '!' or marker == '-' or marker == '~' then
+      new_marker = 'x'
+    else
+      new_marker = ' '
+    end
+  end
+
+  if new_marker then
+    vim.api.nvim_buf_set_text(0, row - 1, marker_pos - 1, row - 1, marker_pos, { new_marker })
+  end
+end, { noremap = true })
+
 -- merge it with alt y?
 vim.api.nvim_create_user_command('CopyLineAbove', function(opts)
   -- local count = opts.count
