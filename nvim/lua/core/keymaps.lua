@@ -12,10 +12,10 @@ m({ 'n', 'v' }, ';', ':')
 m('n', ':', ';')
 
 m({ 'n', 'x' }, 'x', '"_x') -- Prevent x from overwriting clippboard
-m('n', 'D', '"_dd')
-m('v', 'D', '"_d')
-m('n', '<A-d>', 'dd')
+m('n', 'D', 'dd')
+m('n', '<A-d>', '"_dd')
 m('n', '<A-D>', '"_d')
+m('v', '<A-d>', '"_d')
 
 m('v', '>', '>gv')
 m('v', '<', '<gv')
