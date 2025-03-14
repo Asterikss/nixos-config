@@ -65,7 +65,11 @@ m('x', '<Leader><A-y>', function()
   vim.cmd('normal! gv\x1bo\x1b"zp')
 end)
 
-m('n', 'D', 'dd')
+m('n', '<Esc>', '<cmd>nohl<Cr>')
+
+-- C-v, but it will immediately format the line according to the textwidth, if set
+m('i', '<M-C-V>', '<C-R>+')
+
 m('n', 'dd', 'D')
 m('n', 'C', 'cc')
 m('n', 'cc', 'C')

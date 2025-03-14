@@ -2,7 +2,7 @@ local o = vim.opt
 
 o.number = true
 o.relativenumber = true
-o.hlsearch = false
+o.hlsearch = true
 o.incsearch = true
 o.ignorecase = true
 o.smartcase = true
