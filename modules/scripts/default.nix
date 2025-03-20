@@ -21,6 +21,11 @@
     executable = true;
   };
 
+  home.file.".config/scripts/clone.fish" = {
+    source = ./clone.fish;
+    executable = true;
+  };
+
   home.file.".config/scripts/wall.sh" = {
     text = ''
       #!/usr/bin/env bash

@@ -7,6 +7,8 @@
     interactiveShellInit = ''
       set fish_greeting
       bind \ch backward-kill-word
+      set -x FZF_DEFAULT_OPTS "--bind='ctrl-h:unix-word-rubout'"
+      set -x FZF_PREVIEW_OPTS "--preview-window=right:50%:wrap"
       '';
 
     functions = {
@@ -17,19 +19,21 @@
         body = "cd ..; and ls";
       };
       gc = ''git commit -m "$argv"'';
+      clone = ''source ~/.config/scripts/clone.fish $argv'';
     };
 
     shellAliases = {
       "v" = "nvim";
       "f" = "nvim";
       "h" = "nvim .";
-      "S" = "v -S .dev/Session.vim";
+      "S" = "v -c 'silent LoadDefatulSession'";
       "n" = "nvim .dev/notes.txt";
       "a" = "source ~/.config/scripts/jump.fish a";
       "s" = "source ~/.config/scripts/jump.fish s";
       "q" = "source ~/.config/scripts/jump.fish q";
       "p" = "python3";
       "l" = "ls";
+      "la" = "ls -A";
       "cc" = "cd ~/cave/";
       "linkd" = "~/.config/scripts/setup_dev.sh";
 
