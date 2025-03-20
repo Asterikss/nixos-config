@@ -5,6 +5,7 @@
   home.homeDirectory = "/home/lono";
 
   imports = [
+    ../../hmModules/packages
     ../../hmModules/neovim
     ../../hmModules/git
     ../../hmModules/starship
