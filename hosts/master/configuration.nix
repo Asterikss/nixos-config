@@ -199,9 +199,12 @@
     # https://nixos.wiki/wiki/Nvidia#CUDA
     # https://nixos.wiki/wiki/Nvidia#Running_the_new_RTX_SUPER_on_nixos_stable
     # https://github.com/ryan4yin/nix-config/blob/i3-kickstarter/hosts/msi-rtx4090/default.nix
+    # https://discourse.nixos.org/t/nvidia-4070-super-requires-a-specific-driver/38830
     # https://discourse.nixos.org/t/issues-with-my-nvidia-gpu-config/35327/2
     # https://github.com/vimjoyer/nixconf/blob/main/hosts/laptop/included/nvidia.nix
     # https://discourse.nixos.org/t/nvidia-4070-super-requires-a-specific-driver/38830
+    # https://github.com/NixOS/nixpkgs/blob/master/pkgs/os-specific/linux/nvidia-x11/default.nix
+    # https://discourse.nixos.org/t/builder-for-nvidia-x11-550-78-6-10-drv-failed-with-exit-code-2/49360/
   };
 
   xdg.portal.enable = true;
@@ -245,6 +248,7 @@
       alsa-utils
       syncthing
       gcolor3
+      rip2
 
       # fonts
       font-awesome

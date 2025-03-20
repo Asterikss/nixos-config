@@ -5,18 +5,18 @@
   home.homeDirectory = "/home/lono";
 
   imports = [
-    ../../modules/neovim
-    ../../modules/git
-    ../../modules/starship
-    ../../modules/fish
-    ../../modules/swappy
-    ../../modules/scripts
-    ../../modules/hyprland
-    ../../modules/wezterm
-    ../../modules/ruff
-    ../../modules/wlogout
-    ../../modules/librewolf
-    ../../modules/swaylock
+    ../../hmModules/neovim
+    ../../hmModules/git
+    ../../hmModules/starship
+    ../../hmModules/fish
+    ../../hmModules/swappy
+    ../../hmModules/scripts
+    ../../hmModules/hyprland
+    ../../hmModules/wezterm
+    ../../hmModules/ruff
+    ../../hmModules/wlogout
+    ../../hmModules/librewolf
+    ../../hmModules/swaylock
   ];
 
   # set cursor size and dpi for 4k monitor

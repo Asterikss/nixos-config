@@ -36,9 +36,10 @@
       "la" = "ls -A";
       "cc" = "cd ~/cave/";
       "linkd" = "~/.config/scripts/setup_dev.sh";
+      "rm"="no no noo";
 
       # NixOS
-      "reb" = "sudo nixos-rebuild switch --flake ~/cave/nixos-config";
+      "reb" = "sudo nixos-rebuild switch --flake ~/nixos-config";
 
       # Git
       "st" = "git status";
