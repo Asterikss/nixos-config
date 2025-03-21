@@ -19,6 +19,8 @@
       ./hardware-configuration.nix
       ../../modules/system.nix
       ../../modules/ly.nix
+      ../../modules/fish.nix
+      ../../modules/hyprland.nix
     ];
 
   # This value determines the NixOS release from which the default
@@ -99,32 +101,32 @@
 
   # ######
   # programs.hyprland.enable = true;
-  programs.hyprland = {
-    enable = true;
-    # nvidiaPatches = true; # Depriciated, no longer needed
-    # package = pkgs-stable.hyprland;
-    package = inputs.hyprland.packages."${pkgs.system}".hyprland;
-    xwayland.enable = true;
-  };
-
-  environment.sessionVariables = {
-    WLR_NO_HARDWARE_CURSOR = "1";
-    NIXOS_OZONE_WL = "1";
-  };
+  # programs.hyprland = {
+  #   enable = true;
+  #   # nvidiaPatches = true; # Depriciated, no longer needed
+  #   # package = pkgs-stable.hyprland;
+  #   package = inputs.hyprland.packages."${pkgs.system}".hyprland;
+  #   xwayland.enable = true;
+  # };
+  #
+  # environment.sessionVariables = {
+  #   WLR_NO_HARDWARE_CURSOR = "1";
+  #   NIXOS_OZONE_WL = "1";
+  # };
 
   hardware.bluetooth.enable = true;
 
  # hardware.bluetooth.powerOnBoot = true; # powers up the default Bluetooth controller on boot # https://nixos.wiki/wiki/Bluetooth
 
-  programs.bash = {
-    interactiveShellInit = ''
-      if [[ $(${pkgs.procps}/bin/ps --no-header --pid=$PPID --format=comm) != "fish" && -z ''${BASH_EXECUTION_STRING} ]]
-      then
-        shopt -q login_shell && LOGIN_OPTION='--login' || LOGIN_OPTION=""
-        exec ${pkgs.fish}/bin/fish $LOGIN_OPTION
-      fi
-    '';
-  };
+  # programs.bash = {
+  #   interactiveShellInit = ''
+  #     if [[ $(${pkgs.procps}/bin/ps --no-header --pid=$PPID --format=comm) != "fish" && -z ''${BASH_EXECUTION_STRING} ]]
+  #     then
+  #       shopt -q login_shell && LOGIN_OPTION='--login' || LOGIN_OPTION=""
+  #       exec ${pkgs.fish}/bin/fish $LOGIN_OPTION
+  #     fi
+  #   '';
+  # };
 
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
@@ -203,7 +205,7 @@
   xdg.portal.enable = true;
   xdg.portal.extraPortals = [ pkgs.xdg-desktop-portal-gtk ];
 
-  programs.fish.enable = true;
+  # programs.fish.enable = true;
 
   # https://discourse.nixos.org/t/how-to-create-files-in-the-etc-udev-rules-d-directory/11929
   # https://github.com/zsa/wally/wiki/Linux-install#2-create-a-udev-rule-file
