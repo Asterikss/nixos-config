@@ -2,9 +2,22 @@
 
 if test "$argv[1]" = "a"; or test "$argv[1]" = "s"
   # just dirs -> cd (or nvim . if 's')
-  set selected (fd -t d -d 1 . ~/projects ~/cave/ | sed "s|^$HOME/||" | fzf --height 40% --layout reverse --border)
+  set selected (
+    begin
+      fd -t d -d 1 . ~/projects ~/cave/
+      echo ~/nixos-config/
+    end | sed "s|^$HOME/||" | fzf --height 40% --layout reverse --border)
   if test -n "$selected"
     cd "$HOME/$selected"
+
+    # Check if .curr_wtree exists and cd into the directory specified in it
+    if test -f ".curr_wtree"
+      set wtree_dir (cat .curr_wtree | string trim)
+      if test -n "$wtree_dir" -a -d "$wtree_dir"
+        cd "$wtree_dir"
+      end
+    end
+
     if test "$argv[1]" = "s"
       nvim .
     else
