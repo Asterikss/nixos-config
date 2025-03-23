@@ -3,27 +3,17 @@
 {
   networking.hostName = "master";
 
-  # Define a user account. Don't forget to set a password with ‘passwd’.
-  users.users.lono = {
-    isNormalUser = true;
-    description = "lono";
-    extraGroups = [ "networkmanager" "wheel" ];
-    # packages = with pkgs; [
-    #  kdePackages.kate
-    #  thunderbird
-    # ];
-  };
-
-  imports =
-    [
-      ./hardware-configuration.nix
-      ../../modules/system.nix
-      ../../modules/ly.nix
-      ../../modules/fish.nix
-      ../../modules/hyprland.nix
-      ../../modules/networking.nix
-      ../../modules/audio.nix
-    ];
+  imports = [
+    ./hardware-configuration.nix
+    ../../modules/system.nix
+    ../../modules/ly.nix
+    ../../modules/fish.nix
+    ../../modules/hyprland.nix
+    ../../modules/networking.nix
+    ../../modules/audio.nix
+    ../../modules/nvidia.nix
+    ../../modules/hardware.nix
+  ];
 
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions
@@ -33,133 +23,10 @@
   # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
   system.stateVersion = "24.05"; # Did you read the comment?
 
-  # Enable the Flakes feature and the accompanying new nix command-line tool
-  nix.settings.experimental-features = [ "nix-command" "flakes" ];
-
-  # Bootloader.
-  boot.loader.systemd-boot.enable = true;
-  boot.loader.efi.canTouchEfiVariables = true;
-
-  # Enable the X11 windowing system.
-  # You can disable this if you're only using the Wayland session.
-  services.xserver.enable = true;
-
-  # Enable the KDE Plasma Desktop Environment.
-  services.desktopManager.plasma6.enable = true;
-
-  # services.displayManager.sddm.enable = false;
-  # services.displayManager.ly.enable = true;
-
-  # Configure keymap in X11
-  services.xserver.xkb = {
-    layout = "pl";
-    variant = "";
-  };
-
-  # Configure console keymap
-  console.keyMap = "pl2";
-
-  # Enable CUPS to print documents.
-  services.printing.enable = true;
-
-  # Enable touchpad support (enabled default in most desktopManager).
-  # services.xserver.libinput.enable = true;
-
-  # Install firefox.
-  # programs.firefox.enable = true;
-  programs.firefox = {
-    enable = true;
-    package = pkgs-stable.firefox;
-  };
-
-  hardware.bluetooth.enable = true;
- # hardware.bluetooth.powerOnBoot = true; # powers up the default Bluetooth controller on boot # https://nixos.wiki/wiki/Bluetooth
-
-  nixpkgs.config.allowUnfree = true;
-
-  # Fuck Nvidia
-  # Load nvidia driver for Xorg and Wayland
-  services.xserver.videoDrivers = ["nvidia"];
-  # Enable OpenGL
-  hardware.graphics = { # used to be hardware.opengl, it might change again
-    enable = true;
-  };
-  hardware.nvidia = {
-    # open = false;
-    open = true;
-    nvidiaSettings = true;
-    modesetting.enable = true;
-    # powerManagement.enable = false;
-    powerManagement.enable = true;
-    powerManagement.finegrained = false;
-    # package = config.boot.kernelPackages.nvidiaPackages.production;
-    # package = config.boot.kernelPackages.nvidiaPackages.mkDriver {
-    #   version = "555.58.02";
-    #   sha256_64bit = "sha256-xctt4TPRlOJ6r5S54h5W6PT6/3Zy2R4ASNFPu8TSHKM=";
-    #   sha256_aarch64 = "sha256-wb20isMrRg8PeQBU96lWJzBMkjfySAUaqt4EgZnhyF8=";
-    #   openSha256 = "sha256-8hyRiGB+m2hL3c9MDA/Pon+Xl6E788MZ50WrrAGUVuY=";
-    #   settingsSha256 = "sha256-ZpuVZybW6CFN/gz9rx+UJvQ715FZnAOYfHn5jt5Z2C8=";
-    #   persistencedSha256 = "sha256-a1D7ZZmcKFWfPjjH1REqPM5j/YLWKnbkP9qfRyIyxAw=";
-    # };
-    package = config.boot.kernelPackages.nvidiaPackages.latest;
-
-    # fuck nvidia
-    # package = let
-    #     rcu_patch = pkgs.fetchpatch {
-    #         url = "https://github.com/gentoo/gentoo/raw/c64caf53/x11-drivers/nvidia-drivers/files/nvidia-drivers-470.223.02-gpl-pfn_valid.patch";
-    #         hash = "sha256-eZiQQp2S/asE7MfGvfe6dA/kdCvek9SYa/FFGp24dVg=";
-    #     };
-    # in config.boot.kernelPackages.nvidiaPackages.mkDriver {
-    #     # version = "550.40.07";
-    #     # sha256_64bit = "sha256-KYk2xye37v7ZW7h+uNJM/u8fNf7KyGTZjiaU03dJpK0=";
-    #     # sha256_aarch64 = "sha256-AV7KgRXYaQGBFl7zuRcfnTGr8rS5n13nGUIe3mJTXb4=";
-    #     # openSha256 = "sha256-mRUTEWVsbjq+psVe+kAT6MjyZuLkG2yRDxCMvDJRL1I=";
-    #     # settingsSha256 = "sha256-c30AQa4g4a1EHmaEu1yc05oqY01y+IusbBuq+P6rMCs=";
-    #     # persistencedSha256 = "sha256-11tLSY8uUIl4X/roNnxf5yS2PQvHvoNjnd2CB67e870=";
-    #
-    #     # package = config.boot.kernelPackages.nvidiaPackages.mkDriver {
-    #     version = "555.58.02";
-    #     sha256_64bit = "sha256-xctt4TPRlOJ6r5S54h5W6PT6/3Zy2R4ASNFPu8TSHKM=";
-    #     sha256_aarch64 = "sha256-wb20isMrRg8PeQBU96lWJzBMkjfySAUaqt4EgZnhyF8=";
-    #     openSha256 = "sha256-8hyRiGB+m2hL3c9MDA/Pon+Xl6E788MZ50WrrAGUVuY=";
-    #     settingsSha256 = "sha256-ZpuVZybW6CFN/gz9rx+UJvQ715FZnAOYfHn5jt5Z2C8=";
-    #     persistencedSha256 = "sha256-a1D7ZZmcKFWfPjjH1REqPM5j/YLWKnbkP9qfRyIyxAw=";
-    #     # };
-    #
-    #     # version = "535.154.05";
-    #     # sha256_64bit = "sha256-fpUGXKprgt6SYRDxSCemGXLrEsIA6GOinp+0eGbqqJg=";
-    #     # sha256_aarch64 = "sha256-G0/GiObf/BZMkzzET8HQjdIcvCSqB1uhsinro2HLK9k=";
-    #     # openSha256 = "sha256-wvRdHguGLxS0mR06P5Qi++pDJBCF8pJ8hr4T8O6TJIo=";
-    #     # settingsSha256 = "sha256-9wqoDEWY4I7weWW05F4igj1Gj9wjHsREFMztfEmqm10=";
-    #     # persistencedSha256 = "sha256-d0Q3Lk80JqkS1B54Mahu2yY/WocOqFFbZVBh+ToGhaE=";
-    #
-    #     patches = [ rcu_patch ];
-    # };
-
-    # https://discourse.nixos.org/t/solved-what-are-the-options-for-hardware-nvidia-package-docs-seem-out-of-date/14251
-    # https://nixos.wiki/wiki/Nvidia#CUDA
-    # https://nixos.wiki/wiki/Nvidia#Running_the_new_RTX_SUPER_on_nixos_stable
-    # https://github.com/ryan4yin/nix-config/blob/i3-kickstarter/hosts/msi-rtx4090/default.nix
-    # https://discourse.nixos.org/t/nvidia-4070-super-requires-a-specific-driver/38830
-    # https://discourse.nixos.org/t/issues-with-my-nvidia-gpu-config/35327/2
-    # https://github.com/vimjoyer/nixconf/blob/main/hosts/laptop/included/nvidia.nix
-    # https://discourse.nixos.org/t/nvidia-4070-super-requires-a-specific-driver/38830
-    # https://github.com/NixOS/nixpkgs/blob/master/pkgs/os-specific/linux/nvidia-x11/default.nix
-    # https://discourse.nixos.org/t/builder-for-nvidia-x11-550-78-6-10-drv-failed-with-exit-code-2/49360/
-  };
-
-  xdg.portal.enable = true;
-  xdg.portal.extraPortals = [ pkgs.xdg-desktop-portal-gtk ];
-
-  # programs.fish.enable = true;
-
-  # https://discourse.nixos.org/t/how-to-create-files-in-the-etc-udev-rules-d-directory/11929
-  # https://github.com/zsa/wally/wiki/Linux-install#2-create-a-udev-rule-file
-  hardware.keyboard.zsa.enable = true;
-
   environment.systemPackages =
     (with pkgs; [
       brave
+      firefox
       vesktop
       gimp
       mpv

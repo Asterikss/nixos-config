@@ -1,6 +1,15 @@
 {...}:
 
 {
+  users.users.lono = {
+    isNormalUser = true;
+    description = "lono";
+    extraGroups = [ "networkmanager" "wheel" ];
+  };
+
+  # Enable the Flakes feature and the accompanying new nix command-line tool
+  nix.settings.experimental-features = [ "nix-command" "flakes" ];
+
   # Set your time zone.
   time.timeZone = "Europe/Warsaw";
 
@@ -18,4 +27,11 @@
     LC_TELEPHONE = "pl_PL.UTF-8";
     LC_TIME = "pl_PL.UTF-8";
   };
+
+  # Configure console keymap
+  console.keyMap = "pl2";
+
+  # Bootloader.
+  boot.loader.systemd-boot.enable = true;
+  boot.loader.efi.canTouchEfiVariables = true;
 }
