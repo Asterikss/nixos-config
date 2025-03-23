@@ -154,7 +154,7 @@ end)
 
 m('n', '<Leader><Leader>o', function() -- toggle autoformat
   vim.g.enable_autoformat = not vim.g.enable_autoformat
-  vim.notify("Autoformat " .. (vim.g.enable_autoformat and "Enabled" or "Disabled"), vim.log.levels.INFO)
+  vim.notify('Autoformat ' .. (vim.g.enable_autoformat and 'Enabled' or 'Disabled'), vim.log.levels.INFO)
 end)
 
 m('n', '<Leader><Leader>O', function() -- format file based on the extension
@@ -195,6 +195,9 @@ end)
 
 m({ 'n', 't' }, 'X', '<Esc><cmd>wa<CR><cmd>qa<CR>')
 m({ 'n', 't' }, '<A-X>', '<Esc><cmd>wa<CR><cmd>mks! .dev/Session.vim<CR><cmd>qa<CR>')
+
+m('n', '<Leader>hc', ':!git commit -m""<Left>')
+m('n', '<Leader>hP', '<cmd>!git push<CR>')
 
 vim.keymap.set('n', '<CR>', function()
   if vim.bo.filetype ~= 'markdown' then
