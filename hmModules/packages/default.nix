@@ -10,6 +10,9 @@
     fzf
     fastfetch
     syncthing
+    bat
+    eza
+    tree
 
     # dev
     ripgrep
