@@ -18,6 +18,7 @@
     ../../hmModules/wlogout
     ../../hmModules/librewolf
     ../../hmModules/swaylock
+    ../../hmModules/direnv
   ];
 
   # set cursor size and dpi for 4k monitor
