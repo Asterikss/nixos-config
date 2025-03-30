@@ -6,6 +6,8 @@ return {
       keymaps = {
         ['<C-h>'] = false,
         ["<C-l>"] = false,
+        ["<C-p>"] = false,
+        ["<Leader>p"] = "actions.preview",
         ['gd'] = {
           desc = 'Toggle file detail view',
           callback = function()
