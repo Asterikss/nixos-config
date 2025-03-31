@@ -15,6 +15,7 @@
     ../../modules/hardware.nix
     ../../modules/systemPackages.nix
     ../../modules/virtualisation.nix
+    ../../modules/fonts.nix
   ];
 
   # This value determines the NixOS release from which the default
