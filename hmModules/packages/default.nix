@@ -13,10 +13,13 @@
     bat
     eza
     tree
-
-    # dev
+    tokei
+    jq
     ripgrep
     fd
+    calcurse
+
+    # dev
     pyright
     lua-language-server
     stylua

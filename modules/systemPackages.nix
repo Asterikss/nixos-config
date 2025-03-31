@@ -3,6 +3,7 @@
 {
   environment.systemPackages =
     (with pkgs; [
+      yazi
       brave
       firefox
       vesktop
@@ -18,7 +19,11 @@
       gcolor3
       overskride
       swaynotificationcenter
+      libnotify
       swww
+      nvtopPackages.nvidia
+      distrobox
+      webcord
 
       # screenshot utils
       grim
@@ -39,8 +44,6 @@
 
     (with pkgs-stable; [
       kitty
-      dunst
-      libnotify # dunst depends on it
     ])
 
     ++
@@ -48,6 +51,12 @@
     [
       inputs.wezterm.packages.${pkgs.system}.default
     ];
+
+    # dive # look into docker image layers
+    # podman-tui # status of containers in the terminal
+    # docker-compose # start group of containers for dev
+    # podman-compose # start group of containers for dev
+    # mangohud
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
