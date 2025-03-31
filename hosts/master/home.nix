@@ -19,6 +19,7 @@
     ../../hmModules/librewolf
     ../../hmModules/swaylock
     ../../hmModules/direnv
+    ../../hmModules/ghostty
   ];
 
   # set cursor size and dpi for 4k monitor
