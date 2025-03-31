@@ -11,8 +11,8 @@
     ];
     extraConfig = {
       init = { defaultBranch = "master"; };
-      # pull = { rebase = true; };
-      # push = { autoSetupRemote = true; };
+      pull = { rebase = true; };
+      push = { autoSetupRemote = true; };
       # merge = { conflictstyle = "diff3"; };
     };
   };

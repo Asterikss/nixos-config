@@ -20,9 +20,10 @@
       }
       {
         "label" = "logout";
-        "action" = "loginctl terminate-user $USER";
+        "action" = "hyprctl dispatch exit 0";
         "text" = "Logout";
         "keybind" = "e";
+        # "action" = "loginctl terminate-user $USER";
         # "action" = "hyprctl dispatch exit";
         # "action" : "hyprctl dispatch exit 0",
       }
@@ -43,6 +44,7 @@
         "action" = "";
         "text" = "";
         "keybind" = "u";
+        # "action" : "swaylock -f && systemctl suspend",
         # "action" = "systemctl suspend";
         # "text" = "Suspend";
       }
