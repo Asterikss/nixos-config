@@ -4,7 +4,7 @@
   users.users.lono = {
     isNormalUser = true;
     description = "lono";
-    extraGroups = [ "networkmanager" "wheel" ];
+    extraGroups = [ "networkmanager" "wheel" "podman" ];
   };
 
   # Enable the Flakes feature and the accompanying new nix command-line tool
@@ -34,4 +34,16 @@
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
+
+  boot.loader.systemd-boot.configurationLimit = 15;
+  # boot.loader.grub.configurationLimit = 15;
+
+  nix.settings.auto-optimise-store = true;
+
+  # Perform garbage collection weekly to maintain low disk usage
+  # nix.gc = {
+  #   automatic = true;
+  #   dates = "weekly";
+  #   options = "--delete-older-than 1w";
+  # };
 }
