@@ -32,11 +32,15 @@
       "s" = "source ~/.config/scripts/jump.fish s";
       "q" = "source ~/.config/scripts/jump.fish q";
       "p" = "python3";
-      "l" = "ls";
-      "la" = "ls -A";
+      "l" = "eza --icons=auto";
+      "ls" = "eza --icons=auto";
+      "la" = "eza -a --icons=auto";
+      "lt" = "eza --icons=auto --tree";
+      "ll" = "eza -lha --icons=auto --sort=name --group-directories-first";
       "cc" = "cd ~/cave/";
       "linkd" = "~/.config/scripts/setup_dev.sh";
-      "rm"="no no noo";
+      "rm" = "echo no no noo";
+      "jp" = "nix develop ~/jupyter_flake";
 
       # NixOS
       "reb" = "sudo nixos-rebuild switch --flake ~/nixos-config";
