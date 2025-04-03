@@ -15,5 +15,6 @@
       push = { autoSetupRemote = true; };
       # merge = { conflictstyle = "diff3"; };
     };
+    delta.enable = true;
   };
 }

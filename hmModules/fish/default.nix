@@ -9,6 +9,8 @@
       bind \ch backward-kill-word
       set -x FZF_DEFAULT_OPTS "--bind='ctrl-h:unix-word-rubout'"
       set -x FZF_PREVIEW_OPTS "--preview-window=right:50%:wrap"
+      set -x MANPAGER "sh -c 'col -bx | bat -l man -p'"
+      set -x DELTA_PAGER "less --mouse"
       '';
 
     functions = {
