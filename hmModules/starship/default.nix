@@ -7,6 +7,7 @@
       add_newline = false;
       line_break.disabled = true;
       cmd_duration.disabled = true;
+      package.disabled = true;
       # conda = {
       #   disabled = false;
       #   ignore_base = true;
