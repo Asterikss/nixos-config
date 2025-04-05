@@ -244,6 +244,11 @@ vim.keymap.set('n', '<CR>', function()
   end
 end, { noremap = true })
 
+m('n', '<Leader>l', function()
+  -- vim.opt_local.spell = not vim.opt_local.spell:get()
+  vim.wo.spell = not vim.wo.spell
+end)
+
 -- merge it with alt y?
 vim.api.nvim_create_user_command('CopyLineAbove', function(opts)
   -- local count = opts.count
