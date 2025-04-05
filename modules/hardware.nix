@@ -13,4 +13,7 @@
 
   # Enable touchpad support (enabled default in most desktopManager).
   # services.xserver.libinput.enable = true;
+
+  # Auto mount storage devices
+  services.udisks2.enable = true;
 }
