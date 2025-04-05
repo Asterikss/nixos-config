@@ -22,8 +22,8 @@ m('v', '<', '<gv')
 
 m('n', '<A-q>', 'gqip')
 
-m('n', 'n', 'nzz')
-m('n', 'N', 'Nzz')
+-- m('n', 'n', 'nzz')
+-- m('n', 'N', 'Nzz')
 
 m('n', '<C-j>', '<c-w>j')
 m('n', '<C-k>', '<c-w>k')
@@ -46,11 +46,8 @@ m('n', '<A-8>', 'gt')
 m('x', 'J', ":m '>+1<CR>gv=gv")
 m('x', 'K', ":m '<-2<CR>gv=gv")
 
-m('n', '<Leader>l', '<cmd>Lex 25<CR>')
-m('n', '<Leader><Leader>l', '<cmd>Tex<CR>')
-
-m('n', '<c-d>', '<c-d>zz')
-m('n', '<c-u>', '<c-u>zz')
+-- m('n', '<c-d>', '<c-d>zz')
+-- m('n', '<c-u>', '<c-u>zz')
 
 m('n', '<A-y>', '"zyy"zp') -- paste line under
 m('n', '<Leader><A-y>', function() -- comment the line and paste it under
@@ -194,7 +191,6 @@ m('n', '<Leader><Leader>O', function() -- format file based on the extension
 end)
 
 m({ 'n', 't' }, 'X', '<Esc><cmd>wa<CR><cmd>qa<CR>')
-m({ 'n', 't' }, '<A-X>', '<Esc><cmd>wa<CR><cmd>mks! .dev/Session.vim<CR><cmd>qa<CR>')
 
 m('n', '<Leader>hc', ':!git commit -m""<Left>')
 m('n', '<Leader>hP', '<cmd>!git push<CR>')
@@ -232,7 +228,7 @@ vim.keymap.set('n', '<CR>', function()
       new_marker = '*'
     elseif count == 7 then
       new_marker = '?'
-    elseif count == 7 then
+    elseif count == 8 then
       new_marker = '~'
     end
   else
