@@ -19,7 +19,7 @@ return {
           i = {
             ['<c-enter>'] = 'to_fuzzy_refine',
             ['<Esc>'] = actions.close,
-            [''] = function ()
+            [''] = function()
               vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes('<C-w>', true, false, true), 'i', true)
             end,
             -- ["<C-K>"] = actions.select_default,
@@ -119,13 +119,15 @@ return {
         cwd = vim.uv.cwd(),
       }
 
-      require('telescope.pickers').new({}, {
-        debounce = 100,
-        prompt_title = '❅  Multi Grep ❅',
-        finder = finder,
-        previewer = require('telescope.config').values.grep_previewer({}),
-        sorter = require('telescope.sorters').empty(),
-      }):find()
+      require('telescope.pickers')
+        .new({}, {
+          debounce = 100,
+          prompt_title = '❅  Multi Grep ❅',
+          finder = finder,
+          previewer = require('telescope.config').values.grep_previewer({}),
+          sorter = require('telescope.sorters').empty(),
+        })
+        :find()
     end
 
     vim.keymap.set('n', '<leader>sg', live_multigrep, { desc = '[S]earch custom [G]rep' })
@@ -173,5 +175,9 @@ return {
     vim.keymap.set('n', 'Ł', function()
       builtin.find_files({ cwd = '.dev/' })
     end)
+
+    vim.keymap.set('n', '<Leader>z', function()
+      builtin.spell_suggest(require('telescope.themes').get_cursor({}))
+    end, { desc = 'Spelling Suggestions' })
   end,
 }
