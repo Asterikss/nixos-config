@@ -1,10 +1,10 @@
 return {
   'nvim-treesitter/nvim-treesitter',
-  dev = vim.g.system_id == 'nixos',
+  dev = vim.g.nixed ~= nil,
   event = { 'BufReadPost', 'BufNewFile' },
   config = function()
     local ensure_installed_tree = {}
-    if vim.g.system_id ~= 'nixos' then
+    if vim.g.nixed == nil then
       vim.list_extend(ensure_installed_tree, {
         'python',
         'rust',

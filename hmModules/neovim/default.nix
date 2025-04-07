@@ -1,8 +1,10 @@
 { config, pkgs, ... }:
 let
-  treesitterWithGrammars = (pkgs.vimPlugins.nvim-treesitter.withPlugins (p: [
-    p.python
-  ]));
+  treesitterWithGrammars = (
+    pkgs.vimPlugins.nvim-treesitter.withPlugins (p: [
+      p.python
+    ])
+  );
 
   treesitter-parsers = pkgs.symlinkJoin {
     name = "treesitter-parsers";
@@ -25,9 +27,7 @@ in
   };
 
   home.file.".config/nvim/" = {
-    source = config.lib.file.mkOutOfStoreSymlink
-     "${config.home.homeDirectory}/nixos-config/nvim/";
-    # source = ../../nvim;
+    source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/nixos-config/nvim/";
     recursive = true;
   };
 
@@ -37,8 +37,12 @@ in
 
   # Treesitter is configured as a locally developed module in lazy.nvim
   # We put it where lazy.nvim expects locally developed plugins (dev:path)
-  home.file."cave/projects/nvim-treesitter/" = {
+  home.file.".config/nixed_nvim/nvim-treesitter/" = {
     source = treesitterWithGrammars;
     recursive = true;
+  };
+
+  home.sessionVariables = {
+    NIXED_NVIM = "ziomale ponad lale";
   };
 }

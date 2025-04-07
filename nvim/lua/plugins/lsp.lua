@@ -155,13 +155,13 @@ return {
       -- 'clang-format',
     }
 
-    if vim.g.system_id == 'nixos' then
-      print('In nixos setup')
+    if vim.g.nixed ~= nil then
+      -- vim.notify('In nixified setup', vim.log.levels.INFO)
       for _, server_name in pairs(ensure_installed) do
         setup_server(server_name)
       end
     else
-      print('Not nixos setup')
+      -- vim.notify('Notnixos setup', vim.log.levels.INFO)
       vim.list_extend(ensure_installed, extra_tools)
       require('mason-tool-installer').setup { ensure_installed = ensure_installed }
       require('mason-lspconfig').setup { handlers = { setup_server } }

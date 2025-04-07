@@ -16,7 +16,7 @@ vim.opt.rtp:prepend(lazypath)
 
 require('lazy').setup('plugins', {
   dev = {
-    path = '~/cave/projects/',
+    path = '~/.config/nixed_nvim/',
     fallback = false,
   },
   change_detection = {
