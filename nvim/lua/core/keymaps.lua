@@ -43,6 +43,13 @@ m('i', '<A-8>', '<Esc>gt')
 m('n', '<A-7>', 'gT')
 m('n', '<A-8>', 'gt')
 
+m('n', 'q', function ()
+  vim.cmd('normal gcc')
+end)
+m('v', 'q', function ()
+  vim.cmd('normal gc')
+end)
+
 m('x', 'J', ":m '>+1<CR>gv=gv")
 m('x', 'K', ":m '<-2<CR>gv=gv")
 
@@ -66,12 +73,18 @@ m('n', '<Esc>', '<cmd>nohl<Cr>')
 
 -- C-v, but it will immediately format the line according to the textwidth, if set
 m('i', '<M-C-V>', '<C-R>+')
+-- TODO? make it so that the text is not formattet when not in .md etc. I think removing textwidth does not change anything.
+m('n', '<M-C-V>', function()
+  vim.cmd('normal "+p')
+  vim.cmd('normal gqq')
+end)
 
 m('n', 'dd', 'D')
 m('n', 'C', 'cc')
 m('n', 'cc', 'C')
 m('n', 'f', 'v')
 m('n', 'F', 'V')
+m('n', '<A-f>', 'V') -- Alt-lower case f seems to be a separate thing, which is nice
 m({ 'n', 'x' }, 'v', 'f')
 m({ 'n', 'x' }, 'V', 'F')
 
@@ -114,7 +127,7 @@ m({ 'n', 'i' }, '<C-e>', function()
   vim.cmd('wa')
 end)
 
-m('i', "<A-'>", function() -- this took me 3 hours
+m('i', "<A-'>", function() -- I wasted 3 hours on this
   -- vim.api.nvim_feedkeys('\x1blyla, \x12"\x12"' .. vim.api.nvim_replace_termcodes("<Left>", true, false, true), "m", true) -- \x16 for c-c; 12 for c-r
   local col = vim.api.nvim_win_get_cursor(0)[2]
   local char_under_cursor = vim.api.nvim_get_current_line():sub(col + 1, col + 1)
@@ -141,6 +154,12 @@ m('n', '<Leader><Leader>c', function() -- clear all ^M
     'm',
     true
   )
+end)
+
+local virtual_text_enabled = false
+m('n', '<LocalLeader>e', function()
+  virtual_text_enabled = not virtual_text_enabled
+  vim.diagnostic.config({ virtual_text = virtual_text_enabled })
 end)
 
 m('n', 'gT', function() -- open current file in a new tab
@@ -205,6 +224,7 @@ vim.keymap.set('n', '<CR>', function()
   local s, bracket_pos = line:find('^%s*%- %[')
   if not s then
     vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes('<CR>', true, false, true), 'n', true)
+    return
   end
 
   local row = vim.api.nvim_win_get_cursor(0)[1]
@@ -401,13 +421,21 @@ m('t', '<A-9>', '<cmd>lua require("harpoon.ui").nav_file(4)<CR>')
 m('t', '<A-0>', '<cmd>lua require("harpoon.ui").nav_file(5)<CR>')
 
 m('t', '<A-h>', function()
-  vim.cmd('b #') -- vim.api.nvim_feedkeys("\x1b" .. vim.api.nvim_replace_termcodes("<C-^>", true, false, true), "m", true)
-  vim.cmd('normal! zz')
+  if vim.fn.bufnr("#") == vim.fn.bufnr("%") then
+    vim.cmd('Oil')
+  else
+    vim.cmd('b #') -- vim.api.nvim_feedkeys("\x1b" .. vim.api.nvim_replace_termcodes("<C-^>", true, false, true), "m", true)
+    vim.cmd('normal! zz')
+  end
 end)
 
 m('t', '<A-b>', function()
-  vim.cmd('b #')
-  vim.cmd('normal! zz')
+  if vim.fn.bufnr("#") == vim.fn.bufnr("%") then
+    vim.cmd('Oil')
+  else
+    vim.cmd('b #')
+    vim.cmd('normal! zz')
+  end
 end)
 
 m('t', '<A-j>', function()
@@ -425,10 +453,10 @@ end)
 --     ';lua require("harpoon.term").gotoTerminal(1)\r;lua require("harpoon.term").sendCommand(1, 2)\ra\r', "m", true)
 -- end)
 
-m('t', 'ł', '<CMD>e .dev/notes.txt<CR>')
+m('t', 'ł', '<CMD>e .dev/notes.md<CR>')
 m('n', 'ł', function()
-  if vim.fn.expand('%') ~= '.dev/notes.txt' then
-    vim.cmd('e .dev/notes.txt')
+  if vim.fn.expand('%') ~= '.dev/notes.md' then
+    vim.cmd('e .dev/notes.md')
   else
     local prev_buf_name = vim.fn.bufname('#')
     vim.cmd('b #')
