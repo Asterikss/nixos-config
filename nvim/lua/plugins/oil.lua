@@ -1,13 +1,13 @@
 return {
   'stevearc/oil.nvim',
-  dependencies = { { 'echasnovski/mini.icons', opts = {} } }, -- { "nvim-tree/nvim-web-devicons" }
+  dependencies = { { 'echasnovski/mini.icons', opts = {} } },
   config = function()
     require('oil').setup({
       keymaps = {
         ['<C-h>'] = false,
-        ["<C-l>"] = false,
-        ["<C-p>"] = false,
-        ["<Leader>p"] = "actions.preview",
+        ['<C-l>'] = false,
+        ['<C-p>'] = false,
+        ['<Leader>p'] = 'actions.preview',
         ['gd'] = {
           desc = 'Toggle file detail view',
           callback = function()
