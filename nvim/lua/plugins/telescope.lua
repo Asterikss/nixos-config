@@ -22,6 +22,9 @@ return {
             [''] = function()
               vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes('<C-w>', true, false, true), 'i', true)
             end,
+            ['<C-BS>'] = function()
+              vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes('<C-w>', true, false, true), 'i', true)
+            end,
             -- ["<C-K>"] = actions.select_default,
             -- ["<C-h>"] = actions.cycle_history_next,
           },
@@ -147,24 +150,20 @@ return {
     end, { desc = '[S]earch [/] in Open Files' })
 
     vim.keymap.set('n', '<leader>sc', function()
-      builtin.find_files { cwd = vim.fn.stdpath 'config' }
-    end, { desc = '[S]earch Neovim [C]onfig' })
+      builtin.find_files { cwd = '~/nixos-config/' }
+    end, { desc = '[S]earch [C]onfig' })
 
-    vim.keymap.set('n', '<leader>sn', function()
+    vim.keymap.set('n', '<leader>k', function()
       builtin.find_files({ cwd = '~/cave/vault/' })
-    end, { desc = '[S]search dev_[n]otes' })
+    end, { desc = '[S]search [V]ault' })
 
-    vim.keymap.set('n', '<leader>sN', function()
+    vim.keymap.set('n', '<leader>K', function()
       builtin.find_files({ cwd = '~/cave/notes_proj/' })
-    end, { desc = '[S]search [N]otes' })
-
-    vim.keymap.set('n', '<leader>st', function()
-      builtin.find_files({ cwd = '~/cave/todos/' })
-    end, { desc = '[S]search [N]otes' })
+    end, { desc = '[S]search Proj Notes' })
 
     vim.keymap.set('n', '<leader>sk', function()
       builtin.find_files({ cwd = '~/cave/kkk/' })
-    end, { desc = '[S]search [N]otes' })
+    end, { desc = '[S]search [K] Notes' })
 
     vim.keymap.set('n', '<Leader>f', function()
       builtin.find_files(require('telescope.themes').get_dropdown {
@@ -173,7 +172,7 @@ return {
     end, { desc = '[F]ind Files' })
 
     vim.keymap.set('n', 'Ł', function()
-      builtin.find_files({ cwd = '.dev/' })
+      builtin.find_files({ cwd = '../.dev/' })
     end)
 
     vim.keymap.set('n', '<Leader>z', function()
