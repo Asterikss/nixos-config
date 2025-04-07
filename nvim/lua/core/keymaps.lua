@@ -43,10 +43,10 @@ m('i', '<A-8>', '<Esc>gt')
 m('n', '<A-7>', 'gT')
 m('n', '<A-8>', 'gt')
 
-m('n', 'q', function ()
+m('n', 'q', function()
   vim.cmd('normal gcc')
 end)
-m('v', 'q', function ()
+m('v', 'q', function()
   vim.cmd('normal gc')
 end)
 
@@ -84,7 +84,6 @@ m('n', 'C', 'cc')
 m('n', 'cc', 'C')
 m('n', 'f', 'v')
 m('n', 'F', 'V')
-m('n', '<A-f>', 'V') -- Alt-lower case f seems to be a separate thing, which is nice
 m({ 'n', 'x' }, 'v', 'f')
 m({ 'n', 'x' }, 'V', 'F')
 
@@ -421,7 +420,7 @@ m('t', '<A-9>', '<cmd>lua require("harpoon.ui").nav_file(4)<CR>')
 m('t', '<A-0>', '<cmd>lua require("harpoon.ui").nav_file(5)<CR>')
 
 m('t', '<A-h>', function()
-  if vim.fn.bufnr("#") == vim.fn.bufnr("%") then
+  if vim.fn.bufnr('#') == vim.fn.bufnr('%') then
     vim.cmd('Oil')
   else
     vim.cmd('b #') -- vim.api.nvim_feedkeys("\x1b" .. vim.api.nvim_replace_termcodes("<C-^>", true, false, true), "m", true)
@@ -430,7 +429,7 @@ m('t', '<A-h>', function()
 end)
 
 m('t', '<A-b>', function()
-  if vim.fn.bufnr("#") == vim.fn.bufnr("%") then
+  if vim.fn.bufnr('#') == vim.fn.bufnr('%') then
     vim.cmd('Oil')
   else
     vim.cmd('b #')

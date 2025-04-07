@@ -19,4 +19,7 @@ require('lazy').setup('plugins', {
     path = '~/cave/projects/',
     fallback = false,
   },
+  change_detection = {
+    notify = false,
+  },
 })
