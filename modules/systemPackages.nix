@@ -24,6 +24,7 @@
       nvtopPackages.nvidia
       distrobox
       webcord
+      libreoffice
 
       # screenshot utils
       grim

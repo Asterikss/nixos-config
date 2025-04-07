@@ -24,9 +24,11 @@
     lua-language-server
     stylua
     uv
+    nixfmt-rfc-style
     # rust-analyzer-unwrapped
     # nodejs_22
     # gh
+    # quarto
 
     # build-essential
     cmake
