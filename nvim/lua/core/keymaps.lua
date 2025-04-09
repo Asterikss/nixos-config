@@ -22,9 +22,6 @@ m('v', '<', '<gv')
 
 m('n', '<A-q>', 'gqip')
 
--- m('n', 'n', 'nzz')
--- m('n', 'N', 'Nzz')
-
 m('n', '<C-j>', '<c-w>j')
 m('n', '<C-k>', '<c-w>k')
 m('n', '<C-l>', '<c-w>l')
@@ -52,9 +49,6 @@ end)
 
 m('x', 'J', ":m '>+1<CR>gv=gv")
 m('x', 'K', ":m '<-2<CR>gv=gv")
-
--- m('n', '<c-d>', '<c-d>zz')
--- m('n', '<c-u>', '<c-u>zz')
 
 m('n', '<A-y>', '"zyy"zp') -- paste line under
 m('n', '<Leader><A-y>', function() -- comment the line and paste it under
@@ -113,6 +107,7 @@ end)
 m('n', 'gt', '<cmd>vsp | lua vim.lsp.buf.definition()<CR>')
 
 m({ 'i', 'c' }, '', '<C-w>') -- map Control Backspace to Control W
+m({ 'i', 'c' }, '<C-BS>', '<C-w>')
 m('c', '<Up>', '<C-p>')
 m('c', '<Down>', '<C-n>')
 m('c', '<C-p>', '<Up>')
@@ -334,7 +329,6 @@ m('n', '<A-h>', function() -- goes to the beginning of the command line. Always 
   if vim.bo.buftype == 'terminal' then
     -- vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes("<C-^>", true, false, true), "m", true) -- change to :e %
     vim.cmd('b #')
-    vim.cmd('normal! zz')
   else
     vim.api.nvim_feedkeys(';lua require("harpoon.term").gotoTerminal(1)\ra', 'm', true) -- Can you go into insert mode via command -- keepjumps, also needed for C-^ -> almost equivalent to ":e #"!
   end
@@ -344,10 +338,6 @@ m('n', '<A-H>', function() -- same, but does not change the original location of
   if vim.bo.buftype == 'terminal' then
     -- vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes("<C-^>", true, false, true), "m", true)
     vim.cmd('e #')
-    -- vim.schedule(function()
-    --     vim.cmd("normal! zz")
-    -- end)
-    vim.cmd('normal! zz')
   else
     vim.api.nvim_feedkeys(';lua require("harpoon.term").gotoTerminal(1)\r', 'm', true) -- Maby do that with a command since a is not needed
   end
@@ -424,7 +414,6 @@ m('t', '<A-h>', function()
     vim.cmd('Oil')
   else
     vim.cmd('b #') -- vim.api.nvim_feedkeys("\x1b" .. vim.api.nvim_replace_termcodes("<C-^>", true, false, true), "m", true)
-    vim.cmd('normal! zz')
   end
 end)
 
@@ -433,7 +422,6 @@ m('t', '<A-b>', function()
     vim.cmd('Oil')
   else
     vim.cmd('b #')
-    vim.cmd('normal! zz')
   end
 end)
 

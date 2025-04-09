@@ -8,10 +8,7 @@ return {
     forward_same_buf_key = '<C-i>',
     backward_same_buf_key = '<C-o>',
     on_success = function()
-      vim.cmd('normal! g`"zz')
-    end,
-    on_success_same_buf = function()
-      vim.cmd('normal! zz')
+      vim.cmd('normal! g`"')
     end,
   },
 }
