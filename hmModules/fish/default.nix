@@ -1,4 +1,4 @@
-{...}:
+{ ... }:
 
 {
   programs.fish = {
@@ -11,17 +11,21 @@
       set -x FZF_PREVIEW_OPTS "--preview-window=right:50%:wrap"
       set -x MANPAGER "sh -c 'col -bx | bat -l man -p'"
       set -x DELTA_PAGER "less --mouse"
-      '';
+    '';
 
     functions = {
-      c = {
-        body = "cd $argv; and ls";
-      };
-      d = {
-        body = "cd ..; and ls";
-      };
+      c = ''cd $argv; and ls'';
+      d = ''cd ..; and ls'';
       gc = ''git commit -m "$argv"'';
       clone = ''source ~/.config/scripts/clone.fish $argv'';
+      y = ''
+        set tmp (mktemp -t "yazi-cwd.XXXXXX")
+        yazi $argv --cwd-file="$tmp"
+        if set cwd (command cat -- "$tmp"); and [ -n "$cwd" ]; and [ "$cwd" != "$PWD" ]
+          builtin cd -- "$cwd"
+        end
+        rip --force -- "$tmp"
+      '';
     };
 
     shellAliases = {
