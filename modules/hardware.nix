@@ -1,4 +1,4 @@
-{...}:
+{ pkgs, ... }:
 
 {
   # Enable CUPS to print documents.
@@ -20,6 +20,9 @@
     ];
     ensureDefaultPrinter = "HP-DeskJet4530";
   };
+  # enables support for SANE scanners; scanimage [-L]; sane-find-scanner;
+  hardware.sane.enable = true;
+  hardware.sane.extraBackends = [ pkgs.hplip ]; # pkgs.hplipWithPlugin
 
   hardware.bluetooth.enable = true;
   # hardware.bluetooth.powerOnBoot = true; # powers up the default Bluetooth controller on boot # https://nixos.wiki/wiki/Bluetooth
