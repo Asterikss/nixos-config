@@ -1,9 +1,13 @@
-{ pkgs, pkgs-stable, inputs, ... }:
+{
+  pkgs,
+  pkgs-stable,
+  inputs,
+  ...
+}:
 
 {
   environment.systemPackages =
     (with pkgs; [
-      yazi
       brave
       firefox
       vesktop
