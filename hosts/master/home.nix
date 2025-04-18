@@ -22,6 +22,7 @@
     ../../hmModules/ghostty
     ../../hmModules/udiskie
     ../../hmModules/smayimg
+    ../../hmModules/mimeApps
   ];
 
   home.stateVersion = "24.05";
