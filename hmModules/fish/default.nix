@@ -11,6 +11,8 @@
       set -x FZF_PREVIEW_OPTS "--preview-window=right:50%:wrap"
       set -x MANPAGER "sh -c 'col -bx | bat -l man -p'"
       set -x DELTA_PAGER "less --mouse"
+      set -x SWWW_TRANSITION_FPS 60
+      set -x UV_PYTHON_DOWNLOADS "never"
     '';
 
     functions = {
@@ -44,9 +46,11 @@
       "lt" = "eza --icons=auto --tree";
       "ll" = "eza -lha --icons=auto --sort=name --group-directories-first";
       "cc" = "cd ~/cave/";
+      "cn" = "cd ~/.config/";
       "linkd" = "~/.config/scripts/setup_dev.sh";
-      "rm" = "echo no no noo";
       "jp" = "nix develop ~/jupyter_flake";
+      "gal" = "swayimg --gallery";
+      "gall" = "swayimg --gallery --config='general.size=2200,1000'";
 
       # NixOS
       "reb" = "sudo nixos-rebuild switch --flake ~/nixos-config";
@@ -67,10 +71,7 @@
       "drmi" = "docker rmi";
       "drm" = "docker rm";
 
-      # "jp" ='jupyter notebook'
       # "t" ='v -c term'
-      # "ca" ='conda activate'
-      # "sa" ='source activate'
       # "k" ='zellij'
     };
   };

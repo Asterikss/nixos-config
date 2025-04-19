@@ -24,6 +24,7 @@
     ../../hmModules/smayimg
     ../../hmModules/yazi
     ../../hmModules/mimeApps
+    ../../hmModules/mpv
   ];
 
   home.stateVersion = "24.05";
