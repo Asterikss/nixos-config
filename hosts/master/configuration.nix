@@ -13,7 +13,7 @@
     ./hardware-configuration.nix
     ../../modules/system.nix
     ../../modules/ly.nix
-    ../../modules/fish.nix
+    ../../modules/shell.nix
     ../../modules/hyprland.nix
     ../../modules/networking.nix
     ../../modules/audio.nix
