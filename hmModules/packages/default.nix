@@ -18,6 +18,9 @@
     ripgrep
     fd
     calcurse
+    ffmpeg
+    py7zr
+    ripdrag
 
     # dev
     pyright
