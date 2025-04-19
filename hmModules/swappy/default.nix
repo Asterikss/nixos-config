@@ -1,4 +1,4 @@
-{...}:
+{ ... }:
 
 {
   home.file.".config/swappy/config" = {

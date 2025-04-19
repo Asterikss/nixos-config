@@ -1,4 +1,4 @@
-{...}:
+{ ... }:
 
 {
   home.file.".config/wezterm/wezterm.lua" = {

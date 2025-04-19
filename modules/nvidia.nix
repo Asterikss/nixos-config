@@ -5,7 +5,7 @@
 
   # Fuck Nvidia
   # Load nvidia driver for Xorg and Wayland
-  services.xserver.videoDrivers = ["nvidia"];
+  services.xserver.videoDrivers = [ "nvidia" ];
   # Enable OpenGL
   hardware.graphics = {
     enable = true;

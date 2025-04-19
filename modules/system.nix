@@ -1,14 +1,23 @@
-{...}:
+{ ... }:
 
 {
   users.users.lono = {
     isNormalUser = true;
     description = "lono";
-    extraGroups = [ "networkmanager" "wheel" "podman" ];
+    extraGroups = [
+      "networkmanager"
+      "wheel"
+      "podman"
+      "lp"
+      "scanner"
+    ];
   };
 
   # Enable the Flakes feature and the accompanying new nix command-line tool
-  nix.settings.experimental-features = [ "nix-command" "flakes" ];
+  nix.settings.experimental-features = [
+    "nix-command"
+    "flakes"
+  ];
 
   # Set your time zone.
   time.timeZone = "Europe/Warsaw";

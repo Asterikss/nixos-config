@@ -1,4 +1,4 @@
-{...}:
+{ ... }:
 
 {
   programs.starship = {
@@ -8,13 +8,8 @@
       line_break.disabled = true;
       cmd_duration.disabled = true;
       package.disabled = true;
-      # conda = {
-      #   disabled = false;
-      #   ignore_base = true;
-      #   format = "[$symbol$environment](dimmed green) "
-      # }
-      # aws.disabled = true;
-      # gcloud.disabled = true;
+      character.success_symbol = "[󰈺 ](#7B68F5)";
+      character.error_symbol = "[󰈺 ](#A39475)";
     };
   };
 }
