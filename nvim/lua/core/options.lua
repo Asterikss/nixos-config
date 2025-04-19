@@ -46,17 +46,18 @@ o.listchars = {
 }
 
 vim.g.markdown_folding = 1
+vim.g.enable_autoformat = true
 
 if vim.fn.system('uname -r'):find('WSL') then
   vim.g.clipboard = {
     name = 'win32yank',
     copy = {
-      ["+"] = 'win32yank.exe -i --crlf',
-      ["*"] = 'win32yank.exe -i --crlf',
+      ['+'] = 'win32yank.exe -i --crlf',
+      ['*'] = 'win32yank.exe -i --crlf',
     },
     paste = {
-      ["+"] = 'win32yank.exe -o --lf',
-      ["*"] = 'win32yank.exe -o --lf',
+      ['+'] = 'win32yank.exe -o --lf',
+      ['*'] = 'win32yank.exe -o --lf',
     },
     cache_enabled = 0,
   }
