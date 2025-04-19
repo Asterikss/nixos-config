@@ -20,7 +20,7 @@ m('v', '<A-d>', '"_d')
 m('v', '>', '>gv')
 m('v', '<', '<gv')
 
-m('n', '<A-q>', 'gqip')
+m('n', '<A-q>', "m'gqip`'")
 
 m('n', '<C-j>', '<c-w>j')
 m('n', '<C-k>', '<c-w>k')
@@ -440,10 +440,10 @@ end)
 --     ';lua require("harpoon.term").gotoTerminal(1)\r;lua require("harpoon.term").sendCommand(1, 2)\ra\r', "m", true)
 -- end)
 
-m('t', 'ł', '<CMD>e .dev/notes.md<CR>')
+m('t', 'ł', '<CMD>e ../.dev/notes.md<CR>')
 m('n', 'ł', function()
-  if vim.fn.expand('%') ~= '.dev/notes.md' then
-    vim.cmd('e .dev/notes.md')
+  if vim.fn.expand('%') ~= '../.dev/notes.md' then
+    vim.cmd('e ../.dev/notes.md')
   else
     local prev_buf_name = vim.fn.bufname('#')
     vim.cmd('b #')

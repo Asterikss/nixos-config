@@ -18,15 +18,17 @@ return {
     formatters_by_ft = {
       lua = { 'stylua' },
       python = { 'ruff_format' },
+      nix = { 'nixfmt' },
       -- javascript = { 'prettierd', 'prettier', stop_after_first = true },
     },
     format_on_save = function(bufnr)
-      if vim.g.enable_autoformat then
-        return { timeout_ms = 500, lsp_format = 'never' }
+      if vim.g.enable_autoformat == false then
+        return
       end
+      return { timeout_ms = 500, lsp_format = 'never' }
     end,
   },
-  -- init = function()
-  --   vim.o.formatexpr = 'v:lua.require'conform'.formatexpr()'
-  -- end,
+  init = function()
+    vim.o.formatexpr = 'v:lua.require"conform".formatexpr()'
+  end,
 }
