@@ -12,35 +12,44 @@
     wezterm.url = "github:wez/wezterm?dir=nix";
   };
 
-  outputs = inputs@{ nixpkgs, nixpkgs-stable, home-manager, ... }: {
-    nixosConfigurations = let
-      system = "x86_64-linux";
-    in {
-      master = nixpkgs.lib.nixosSystem {
-          inherit system;
+  outputs =
+    inputs@{
+      nixpkgs,
+      nixpkgs-stable,
+      home-manager,
+      ...
+    }:
+    {
+      nixosConfigurations =
+        let
+          system = "x86_64-linux";
+        in
+        {
+          master = nixpkgs.lib.nixosSystem {
+            inherit system;
 
-          specialArgs = {
-            pkgs-stable = import nixpkgs-stable {
-              inherit system;
-              config.allowUnfree = true;
+            specialArgs = {
+              pkgs-stable = import nixpkgs-stable {
+                inherit system;
+                config.allowUnfree = true;
+              };
+              inherit inputs;
             };
-            inherit inputs;
+
+            modules = [
+              ./hosts/master/configuration.nix
+              home-manager.nixosModules.home-manager
+              {
+                home-manager.useGlobalPkgs = true;
+                home-manager.useUserPackages = true;
+                home-manager.users.lono = import ./hosts/master/home.nix;
+                home-manager.backupFileExtension = "backup";
+
+                # Optionally, use home-manager.extraSpecialArgs to pass
+                # arguments to home.nix
+              }
+            ];
           };
-
-        modules = [
-          ./hosts/master/configuration.nix
-          home-manager.nixosModules.home-manager
-          {
-            home-manager.useGlobalPkgs = true;
-            home-manager.useUserPackages = true;
-            home-manager.users.lono = import ./hosts/master/home.nix;
-            home-manager.backupFileExtension = "backup";
-
-            # Optionally, use home-manager.extraSpecialArgs to pass
-            # arguments to home.nix
-          }
-        ];
-      };
+        };
     };
-  };
 }
