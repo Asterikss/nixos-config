@@ -12,7 +12,6 @@
       firefox
       vesktop
       gimp
-      mpv
       zathura
       swayimg
       kdePackages.dolphin
