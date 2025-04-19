@@ -40,8 +40,8 @@ if [[ $1 == rc ]]; then
 
 
 elif [[ $1 == rf ]]; then
-  mkdir -p ~/cave/pics/screenshots
-  filename=~/cave/pics/screenshots/$(date +%Y-%m-%d_%H-%M-%S).png
+  mkdir -p ~/cave/pixels/screenshots
+  filename=~/cave/pixels/screenshots/$(date +%Y-%m-%d_%H-%M-%S).png
 
   grim -g "$(slurp -b '#000000b0' -c '#00000000')" "$filename"
   notify-send 'Screenshot Taken' "$filename"
@@ -59,8 +59,8 @@ elif [[ $1 == sc ]]; then
 
 
 elif [[ $1 == sf ]]; then
-  mkdir -p ~/cave/pics/screenshots
-  filename=~/cave/pics/screenshots/$(date +%Y-%m-%d_%H-%M-%S).png
+  mkdir -p ~/cave/pixels/screenshots
+  filename=~/cave/pixels/screenshots/$(date +%Y-%m-%d_%H-%M-%S).png
 
   grim "$filename"
   notify-send 'Screenshot Taken' "$filename"

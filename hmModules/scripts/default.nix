@@ -1,4 +1,4 @@
-{...}:
+{ ... }:
 
 {
   home.file.".config/scripts/screenshots.sh" = {
@@ -47,7 +47,9 @@
           exit 1
         fi
 
-        swww img "$random_image"
+        sleep 2
+
+        swww img "$random_image" --transition-step 1
       fi
     '';
     executable = true;
