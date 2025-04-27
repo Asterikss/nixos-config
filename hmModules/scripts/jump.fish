@@ -26,7 +26,7 @@ if test "$argv[1]" = "a"; or test "$argv[1]" = "s"
   end
 else if test "$argv[1]" = "q"
   # all in vault etc. -> cd into the right folder, nvim <selection>
-  set selected (fd . ~/cave/vault/ ~/cave/kkk/ | sed "s|^$HOME/||" | fzf --height 40% --layout reverse --border)
+  set selected (fd -t f . ~/cave/vault/ ~/cave/kkk/ | sed "s|^$HOME/||" | fzf --height 40% --layout reverse --border)
   if test -n "$selected"
     set full_path "$HOME/$selected"
     # Find the root directory (vault, kkk, or todos)

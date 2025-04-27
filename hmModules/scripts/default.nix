@@ -47,7 +47,7 @@
           exit 1
         fi
 
-        sleep 2
+        sleep 2.5
 
         swww img "$random_image" --transition-step 1
       fi

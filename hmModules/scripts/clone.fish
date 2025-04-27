@@ -34,6 +34,7 @@ if test (count $argv) -lt 2
     echo "master" > $curr_wtree_file
   else
     echo "Failed to add worktree"
+    echo "." > $curr_wtree_file
     return 1
   end
 else

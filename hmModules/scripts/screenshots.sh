@@ -17,7 +17,7 @@ rename_screenshot() {
   new_filename=$(rofi -theme purple -dmenu -p "Filename" -theme-str 'window {width: 20%; height: 3%; padding: 5px;} listview {lines: 1;}')
 
   if [[ -n "$new_filename" ]]; then
-    local new_filepath=~/cave/pics/screenshots/"$new_filename".png
+    local new_filepath=~/cave/pixels/screenshots/"$new_filename".png
     while [[ -e "$new_filepath" ]]; do
       notify-send "Error" "File already exists. Please choose a different name."
       new_filename=$(rofi -theme purple -dmenu -p "File exists. Filename" -theme-str 'window {width: 30%; height: 3%; padding: 5px;} listview {lines: 1;}')
@@ -25,7 +25,7 @@ rename_screenshot() {
         notify-send "Cancelled" "Keeping default filename: $default_filename"
         return
       fi
-      new_filepath=~/cave/pics/screenshots/"$new_filename".png
+      new_filepath=~/cave/pixels/screenshots/"$new_filename".png
     done
     mv "$default_filename" "$new_filepath"
     notify-send 'Screenshot Renamed' "$new_filepath"
