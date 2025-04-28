@@ -3,6 +3,14 @@ let
   treesitterWithGrammars = (
     pkgs.vimPlugins.nvim-treesitter.withPlugins (p: [
       p.python
+      p.cpp
+      p.rust
+      p.bash
+      p.typescript
+      p.tsx
+      p.yaml
+      p.sql
+      p.nix
     ])
   );
 
