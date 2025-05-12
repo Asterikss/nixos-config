@@ -28,6 +28,9 @@
       distrobox
       webcord
       libreoffice
+      xarchiver
+      zenity
+      kitty
 
       # screenshot utils
       grim
@@ -46,15 +49,15 @@
 
     ++
 
-    (with pkgs-stable; [
-      kitty
-    ])
+      (with pkgs-stable; [
+        hello
+      ])
 
     ++
 
-    [
-      inputs.wezterm.packages.${pkgs.system}.default
-    ];
+      [
+        inputs.wezterm.packages.${pkgs.system}.default
+      ];
 
     # dive # look into docker image layers
     # podman-tui # status of containers in the terminal
