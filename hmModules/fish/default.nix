@@ -54,6 +54,7 @@
 
       # NixOS
       "reb" = "sudo nixos-rebuild switch --flake ~/nixos-config";
+      "nd" = "nix develop";
 
       # Git
       "st" = "git status";
