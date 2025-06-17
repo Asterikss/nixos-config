@@ -62,6 +62,7 @@
       "ga." = "git add .";
       "gp" = "git push";
       "gd" = "git diff";
+      "gPf" = "git pull --no-rebase --ff-only";
 
       # Docker
       "di" = "docker images";
