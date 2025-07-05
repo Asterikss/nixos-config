@@ -21,6 +21,7 @@
     ffmpeg
     py7zr
     ripdrag
+    obs-studio
 
     # dev
     pyright
@@ -28,6 +29,7 @@
     stylua
     uv
     nixfmt-rfc-style
+    devenv
     # rust-analyzer-unwrapped
     # nodejs_22
     # gh
