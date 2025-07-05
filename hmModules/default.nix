@@ -1,0 +1,21 @@
+[
+  ./packages
+  ./neovim
+  ./git
+  ./starship
+  ./fish
+  ./swappy
+  ./scripts
+  ./hyprland
+  ./ruff
+  ./wlogout
+  ./librewolf
+  ./swaylock
+  ./direnv
+  ./ghostty
+  ./udiskie
+  ./smayimg
+  ./yazi
+  ./mimeApps
+  ./mpv
+]

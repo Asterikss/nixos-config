@@ -11,17 +11,8 @@
 
   imports = [
     ./hardware-configuration.nix
-    ../../modules/system.nix
-    ../../modules/ly.nix
-    ../../modules/shell.nix
-    ../../modules/hyprland.nix
-    ../../modules/networking.nix
-    ../../modules/audio.nix
+    ../../modules
     ../../modules/nvidia.nix
-    ../../modules/hardware.nix
-    ../../modules/systemPackages.nix
-    ../../modules/virtualisation.nix
-    ../../modules/fonts.nix
   ];
 
   system.stateVersion = "24.05";
