@@ -19,6 +19,7 @@ return {
       lua = { 'stylua' },
       python = { 'ruff_format' },
       nix = { 'nixfmt' },
+      cpp = { 'clang-format' },
       -- javascript = { 'prettierd', 'prettier', stop_after_first = true },
     },
     format_on_save = function(bufnr)

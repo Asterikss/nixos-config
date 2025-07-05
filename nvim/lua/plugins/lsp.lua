@@ -103,7 +103,7 @@ return {
 
     local servers = {
       pyright = {},
-      -- clangd = {},
+      clangd = {},
       ts_ls = {},
       -- taplo = {},
       -- rust_analyzer = {},
