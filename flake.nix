@@ -19,37 +19,33 @@
       home-manager,
       ...
     }:
+    let
+      system = "x86_64-linux";
+      hosts = [
+        "master"
+        "lap"
+      ];
+    in
     {
-      nixosConfigurations =
-        let
-          system = "x86_64-linux";
-        in
-        {
-          master = nixpkgs.lib.nixosSystem {
+      nixosConfigurations = builtins.listToAttrs (
+        map (host: {
+          name = host;
+          value = nixpkgs.lib.nixosSystem {
             inherit system;
-
-            specialArgs = {
-              # pkgs-stable = import nixpkgs-stable {
-              #   inherit system;
-              #   config.allowUnfree = true;
-              # };
-              inherit inputs;
-            };
+            specialArgs = { inherit inputs host; };
 
             modules = [
-              ./hosts/master/configuration.nix
+              ./hosts/${host}/configuration.nix
               home-manager.nixosModules.home-manager
               {
                 home-manager.useGlobalPkgs = true;
                 home-manager.useUserPackages = true;
-                home-manager.users.lono = import ./hosts/master/home.nix;
+                home-manager.users.lono = import ./hosts/${host}/home.nix;
                 home-manager.backupFileExtension = "backup";
-
-                # Optionally, use home-manager.extraSpecialArgs to pass
-                # arguments to home.nix
               }
             ];
           };
-        };
+        }) hosts
+      );
     };
 }
