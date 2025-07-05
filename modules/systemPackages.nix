@@ -1,13 +1,14 @@
 {
   pkgs,
-  pkgs-stable,
+  # pkgs-stable,
   inputs,
   ...
 }:
 
 {
-  environment.systemPackages =
-    (with pkgs; [
+  environment.systemPackages = (
+    with pkgs;
+    [
       brave
       firefox
       vesktop
@@ -42,28 +43,30 @@
       brightnessctl
       alsa-utils
       pavucontrol
+      pmount
 
       # fonts
       font-awesome
-    ])
+    ]
+  );
 
-    ++
+  # ++
+  #
+  #   (with pkgs-stable; [
+  #     hello
+  #   ])
+  #
+  # ++
+  #
+  #   [
+  #     inputs.wezterm.packages.${pkgs.system}.default
+  #   ];
 
-      (with pkgs-stable; [
-        hello
-      ])
-
-    ++
-
-      [
-        inputs.wezterm.packages.${pkgs.system}.default
-      ];
-
-    # dive # look into docker image layers
-    # podman-tui # status of containers in the terminal
-    # docker-compose # start group of containers for dev
-    # podman-compose # start group of containers for dev
-    # mangohud
+  # dive # look into docker image layers
+  # podman-tui # status of containers in the terminal
+  # docker-compose # start group of containers for dev
+  # podman-compose # start group of containers for dev
+  # mangohud
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
