@@ -167,5 +167,14 @@ return {
         end,
       },
     }
+    cmp.setup.filetype({ 'markdown', 'tex' }, {
+      experimental = { ghost_text = false },
+    })
+    -- cmp.setup.filetype({ 'sql', 'mysql', 'plsql' }, {
+    --   sources = {
+    --     { name = 'vim-dadbod-completion' },
+    --     { name = 'buffer' },
+    --   }
+    -- })
   end,
 }
