@@ -42,6 +42,7 @@
                 home-manager.useUserPackages = true;
                 home-manager.users.lono = import ./hosts/${host}/home.nix;
                 home-manager.backupFileExtension = "backup";
+                home-manager.extraSpecialArgs = { inherit host; };
               }
             ];
           };
