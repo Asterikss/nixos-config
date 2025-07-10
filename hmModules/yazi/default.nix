@@ -32,11 +32,6 @@ in
       ];
       manager.prepend_keymap = [
         {
-          desc = "Enter the child directory, or open the file";
-          on = "l";
-          run = "plugin smart-enter";
-        }
-        {
           desc = "Open shell here";
           on = "!";
           run = ''shell "$SHELL" --block'';
@@ -45,6 +40,11 @@ in
           on = "<C-n>";
           run = ''shell 'ripdrag "$@" -x 2>/dev/null &' --confirm'';
         }
+        # {
+        #   desc = "Enter the child directory, or open the file";
+        #   on = "l";
+        #   run = "plugin smart-enter";
+        # }
       ];
     };
   };

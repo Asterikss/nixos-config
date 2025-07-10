@@ -22,6 +22,7 @@
     py7zr
     ripdrag
     obs-studio
+    dysk
 
     # dev
     pyright

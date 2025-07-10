@@ -34,7 +34,7 @@
       "v" = "nvim";
       "f" = "nvim";
       "h" = "nvim .";
-      "S" = "v -c 'silent LoadDefatulSession'";
+      "S" = "v -c 'silent LoadDefaultSession'";
       "n" = "nvim .dev/notes.txt";
       "a" = "source ~/.config/scripts/jump.fish a";
       "s" = "source ~/.config/scripts/jump.fish s";
