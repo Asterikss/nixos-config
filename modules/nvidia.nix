@@ -1,7 +1,8 @@
-{ config, ... }:
+{ pkgs, config, ... }:
 
 {
   nixpkgs.config.allowUnfree = true;
+  environment.systemPackages = [ pkgs.nvtopPackages.nvidia ];
 
   # Fuck Nvidia
   # Load nvidia driver for Xorg and Wayland
