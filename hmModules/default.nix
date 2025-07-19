@@ -21,5 +21,6 @@
     ./yazi
     ./mimeApps
     ./mpv
+    ./sioyek
   ];
 }
