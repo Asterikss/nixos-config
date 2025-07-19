@@ -11,10 +11,35 @@ in
   programs.yazi = {
     enable = true;
     enableFishIntegration = true;
+    shellWrapperName = "y";
 
     settings = {
-      manager = {
+      mgr = {
         show_hidden = false;
+      };
+      opener = {
+        pdf_opener = [
+          {
+            run = "zathura \"$@\"";
+            orphan = true;
+          }
+          {
+            run = "brave \"$@\"";
+          }
+          {
+            run = "firefox \"$@\"";
+          }
+        ];
+      };
+      open = {
+        prepend_rules = [
+          {
+            name = "*.pdf";
+            use = [
+              "pdf_opener"
+            ];
+          }
+        ];
       };
     };
 
@@ -30,7 +55,7 @@ in
           desc = "Cancel input";
         }
       ];
-      manager.prepend_keymap = [
+      mgr.prepend_keymap = [
         {
           desc = "Open shell here";
           on = "!";
