@@ -89,11 +89,12 @@
       }
 
       #lock {
-        background-image: image(url("assets/skeleton_heroes.png"));
+        background-image: image(url("assets/scorpicore.png"));
       }
 
       #logout {
-        background-image: image(url("assets/behemoth_heroes.png"));
+        background-image: image(url("assets/naga_queen.png"));
+        background-size: 35%;
       }
 
       #suspend {
@@ -105,11 +106,12 @@
       }
 
       #shutdown {
-        background-image: image(url("assets/skeleton_heroes.png"));
+        background-image: image(url("assets/royal_griffin.png"));
+        background-size: 45%;
       }
 
       #reboot {
-        background-image: image(url("assets/zhdun.png"));
+        background-image: image(url("assets/greater_basilisk.png"));
       }
     '';
   };
