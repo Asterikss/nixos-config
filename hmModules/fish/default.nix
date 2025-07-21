@@ -27,10 +27,7 @@
       "f" = "nvim";
       "h" = "nvim .";
       "S" = "v -c 'silent LoadDefaultSession'";
-      "n" = "nvim .dev/notes.txt";
-      "a" = "source ~/.config/scripts/jump.fish a";
-      "s" = "source ~/.config/scripts/jump.fish s";
-      "q" = "source ~/.config/scripts/jump.fish q";
+      "n" = "nvim ../.dev/notes.txt";
       "p" = "python3";
       "l" = "eza --icons=auto";
       "ls" = "eza --icons=auto";
@@ -39,14 +36,20 @@
       "ll" = "eza -lha --icons=auto --sort=name --group-directories-first";
       "cc" = "cd ~/cave/";
       "cn" = "cd ~/.config/";
-      "linkd" = "~/.config/scripts/setup_dev.sh";
-      "jp" = "nix develop ~/jupyter_flake";
+      "ccd" = "cd ~/Downloads/";
       "gal" = "swayimg --gallery";
       "gall" = "swayimg --gallery --config='general.size=2200,1000'";
+
+      # Scripts
+      "a" = "source ~/.config/scripts/jump.fish a";
+      "s" = "source ~/.config/scripts/jump.fish s";
+      "q" = "source ~/.config/scripts/jump.fish q";
+      "linkd" = "~/.config/scripts/setup_dev.sh";
 
       # NixOS
       "reb" = "sudo nixos-rebuild switch --flake ~/nixos-config";
       "nd" = "nix develop";
+      "jp" = "nix develop ~/jupyter_flake";
 
       # Git
       "st" = "git status";
