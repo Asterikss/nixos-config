@@ -297,6 +297,22 @@ R = function(name, skip_setup)
   return require(name)
 end
 
+RD = function()
+  local _, session_active = require('dev-chronicles.core.state').get_session_info(true)
+  RELOAD('dev-chronicles')
+  require('dev-chronicles').setup({
+    tracked_parent_dirs = { '~/projects/zzpackage/', '~/projects/' },
+    tracked_dirs = { '~/nixos-config/' },
+    for_dev_start_time = session_active and session_active.start_time,
+    min_session_time = 0,
+  })
+  require('dev-chronicles.core.state').start_session()
+  vim.notify('Dev-chronicles reloaded')
+end
+
+m('n', '<Leader>C', '<cmd>DevChronicles<CR>')
+m('n', '<Leader><Leader>c', RD)
+
 ------ Harpoon + terminal mappings ------
 -- pupulate Harpoon Commands based on the current buffer and run the first command in 1st terminal
 m('n', '<Leader>m', function()
