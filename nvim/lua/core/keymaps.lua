@@ -129,8 +129,10 @@ m('i', '<A-=>', ' == ')
 m('n', '-', '<CMD>Oil<CR>')
 
 m({ 'n', 'i' }, '<C-e>', function()
-  vim.cmd('wa')
+  vim.cmd('w')
 end)
+
+m('n', '<Leader><Leader>p', '<CMD>RenderMarkdown toggle<CR>')
 
 m('i', "<A-'>", function() -- I wasted 3 hours on this
   -- vim.api.nvim_feedkeys('\x1blyla, \x12"\x12"' .. vim.api.nvim_replace_termcodes("<Left>", true, false, true), "m", true) -- \x16 for c-c; 12 for c-r
@@ -150,7 +152,7 @@ m('i', "<A-'>", function() -- I wasted 3 hours on this
   end
 end)
 
-m('n', '<Leader><Leader>c', function() -- clear all ^M
+m('n', '<Leader><Leader><Leader>c', function() -- clear all ^M
   vim.api.nvim_feedkeys(
     ';%s/'
       .. vim.api.nvim_replace_termcodes('<C-q>', true, false, true)
@@ -244,17 +246,17 @@ vim.keymap.set('n', '<CR>', function()
     elseif count == 2 then
       new_marker = '>'
     elseif count == 3 then
-      new_marker = '='
-    elseif count == 4 then
-      new_marker = '_'
-    elseif count == 5 then
-      new_marker = '!'
-    elseif count == 6 then
-      new_marker = '*'
-    elseif count == 7 then
       new_marker = '?'
-    elseif count == 8 then
+    elseif count == 4 then
+      new_marker = '='
+    elseif count == 5 then
+      new_marker = '*'
+    elseif count == 6 then
+      new_marker = '!'
+    elseif count == 7 then
       new_marker = '~'
+    elseif count == 8 then
+      new_marker = '_'
     end
   else
     if marker == ' ' or marker == '!' or marker == '-' or marker == '~' then
