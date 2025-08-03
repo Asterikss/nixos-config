@@ -12,7 +12,7 @@ m({ 'n', 'v' }, ';', ':')
 m('n', ':', ';')
 
 m({ 'n', 'x' }, 'x', '"_x') -- Prevent x from overwriting clippboard
-m('n', 'D', 'dd')
+m('n', 'D', 'dd') -- TODO: Just remove it? v is now dd
 m('n', '<A-d>', '"_dd')
 m('n', '<A-D>', '"_d')
 m('v', '<A-d>', '"_d')
@@ -74,12 +74,17 @@ m('n', '<M-C-V>', function()
 end)
 
 m('n', 'dd', 'D')
-m('n', 'C', 'cc')
+m('n', 'C', 'cc') -- I never use it really. Could map it to ciw
 m('n', 'cc', 'C')
-m('n', 'f', 'v')
-m('n', 'F', 'V')
-m({ 'n', 'x' }, 'v', 'f')
-m({ 'n', 'x' }, 'V', 'F')
+m('n', 'f', 'V')
+m('n', 'F', 'v')
+m('n', 'v', 'dd')
+m('n', 'z', 'v')
+m('n', 'Z', 'Z')
+-- TODO: V is free
+-- change t and r?
+-- m({ 'n', 'x' }, 'v', 'f')
+-- m({ 'n', 'x' }, 'V', 'F')
 
 m('n', 'Y', 'yy')
 m('n', 'yy', 'y$')
@@ -95,10 +100,16 @@ m('n', '<A-P>', "<cmd>pu!<CR>V']=")
 m('n', 'P', '<cmd>pu!<CR>')
 -- m('x', 'p', '"_dP') -- paste without trashing the clippboard. Not needed when using Ctrl-c
 
-m('n', 't', 'yiw')
-m('n', 'T', 'viw"_dP')
-m('n', '<A-t>', 'yiW')
-m('n', '<A-T>', 'viW"_dP')
+-- m('n', 't', 'yiw') -- make it keep the position
+-- m('n', 'T', 'viw"_dP')
+-- m('n', '<A-t>', 'yiW')
+-- m('n', '<A-T>', 'viW"_dP')
+m('n', 'r', 'yiw') -- make it keep the position
+m('n', 'R', 'viw"_dP')
+m('n', '<A-r>', 'yiW')
+m('n', '<A-R>', 'viW"_dP')
+m('n', 't', 'r')
+m('n', 'T', 'R')
 
 m('n', '<Leader><Leader>Q', function()
   vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes('q', true, false, true), 'n', true)
