@@ -319,7 +319,7 @@ RD = function()
     for_dev_start_time = session_active and session_active.start_time,
     min_session_time = 0,
   })
-  require('dev-chronicles.core.state').start_session()
+  require('dev-chronicles').start_session()
   vim.notify('Dev-chronicles reloaded')
 end
 
