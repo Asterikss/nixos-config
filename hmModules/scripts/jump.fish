@@ -36,4 +36,18 @@ else if test "$argv[1]" = "q"
       nvim "$full_path"
     end
   end
+else if test "$argv[1]" = "k"
+  # files in ~/cave/notes_proj
+  set selected (fd -t f . ~/cave/notes_proj/ | sed "s|^$HOME/cave/notes_proj/||" | fzf --height 40% --layout reverse --border)
+  if test -n "$selected"
+    cd "$HOME/cave/notes_proj/"
+    nvim "$selected"
+  end
+else if test "$argv[1]" = "K"
+  # only notes.md files in ~/cave/notes_proj
+  set selected (fd -t f -g 'notes.md' ~/cave/notes_proj/ | sed "s|^$HOME/cave/notes_proj/||" | fzf --height 40% --layout reverse --border)
+  if test -n "$selected"
+    cd "$HOME/cave/notes_proj"
+    nvim "$selected"
+  end
 end

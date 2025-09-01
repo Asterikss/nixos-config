@@ -44,6 +44,8 @@
       "a" = "source ~/.config/scripts/jump.fish a";
       "s" = "source ~/.config/scripts/jump.fish s";
       "q" = "source ~/.config/scripts/jump.fish q";
+      "kk" = "source ~/.config/scripts/jump.fish k";
+      "K" = "source ~/.config/scripts/jump.fish K";
       "linkd" = "~/.config/scripts/setup_dev.sh";
 
       # NixOS
