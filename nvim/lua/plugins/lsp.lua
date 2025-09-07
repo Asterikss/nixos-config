@@ -116,11 +116,21 @@ return {
             completion = {
               callSnippet = 'Replace',
             },
+            runtime = {
+              version = 'LuaJIT',
+            },
             hint = {
               enable = true,
             },
             diagnostics = {
               globals = { 'vim', 'describe', 'it' },
+              unusedLocalExclude = { '_*' },
+              -- enable = true,
+              -- severity = {
+              --   ['undefined-field'] = 'Warning',
+              --   ['undefined-global'] = 'Warning',
+              --   ['missing-fields'] = 'Warning',
+              -- },
             },
             -- You can toggle below to ignore Lua_LS's noisy `missing-fields` warnings
             -- diagnostics = { disable = { 'missing-fields' } },
