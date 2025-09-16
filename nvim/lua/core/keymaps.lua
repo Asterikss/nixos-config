@@ -12,7 +12,6 @@ m({ 'n', 'v' }, ';', ':')
 m('n', ':', ';')
 
 m({ 'n', 'x' }, 'x', '"_x') -- Prevent x from overwriting clippboard
-m('n', 'D', 'dd') -- TODO: Just remove it? v is now dd
 m('n', '<A-d>', '"_dd')
 m('n', '<A-D>', '"_d')
 m('v', '<A-d>', '"_d')
@@ -141,6 +140,19 @@ end)
 
 m('n', '<Leader><Leader>p', '<CMD>RenderMarkdown toggle<CR>')
 
+-- yank visual selection to clipboard wrapped in code fences
+m('v', 'Y', function()
+  vim.cmd('normal! mY"zy`Y')
+  local selected_text = vim.fn.getreg('z')
+
+  local filetype = vim.bo.filetype
+  if filetype == '' then
+    filetype = 'text'
+  end
+
+  local formatted_text = '```' .. filetype .. '\n' .. selected_text .. '```'
+  vim.fn.setreg('+', formatted_text)
+end)
 m('i', "<A-'>", function() -- I wasted 3 hours on this
   -- vim.api.nvim_feedkeys('\x1blyla, \x12"\x12"' .. vim.api.nvim_replace_termcodes("<Left>", true, false, true), "m", true) -- \x16 for c-c; 12 for c-r
   local col = vim.api.nvim_win_get_cursor(0)[2]
