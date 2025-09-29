@@ -153,6 +153,13 @@ m('v', 'Y', function()
   local formatted_text = '```' .. filetype .. '\n' .. selected_text .. '```'
   vim.fn.setreg('+', formatted_text)
 end)
+
+m('n', 'gy', '<CMD>silent %y+<CR>')
+
+m('n', 'gY', function()
+  local ft = vim.bo.filetype == '' and 'text' or vim.bo.filetype
+  vim.fn.setreg('+', '```' .. ft .. '\n' .. table.concat(vim.api.nvim_buf_get_lines(0, 0, -1, false), '\n') .. '\n```')
+end)
 m('i', "<A-'>", function() -- I wasted 3 hours on this
   -- vim.api.nvim_feedkeys('\x1blyla, \x12"\x12"' .. vim.api.nvim_replace_termcodes("<Left>", true, false, true), "m", true) -- \x16 for c-c; 12 for c-r
   local col = vim.api.nvim_win_get_cursor(0)[2]
