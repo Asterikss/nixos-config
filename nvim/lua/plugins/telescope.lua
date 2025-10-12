@@ -133,10 +133,12 @@ return {
         :find()
     end
 
+    local themes = require('telescope.themes')
+
     vim.keymap.set('n', '<leader>sg', live_multigrep, { desc = '[S]earch custom [G]rep' })
 
     vim.keymap.set('n', '<leader>/', function()
-      builtin.current_buffer_fuzzy_find(require('telescope.themes').get_dropdown {
+      builtin.current_buffer_fuzzy_find(themes.get_dropdown {
         winblend = 10,
         previewer = false,
       })
@@ -154,29 +156,37 @@ return {
     end, { desc = '[S]earch [C]onfig' })
 
     vim.keymap.set('n', '<leader>k', function()
-      builtin.find_files({ cwd = '~/cave/vault/' })
-    end, { desc = '[S]search [V]ault' })
+      builtin.find_files({ cwd = '~/cave/vault/', previewer = false })
+    end, { desc = 'Search Vault' })
 
     vim.keymap.set('n', '<leader>K', function()
       builtin.find_files({ cwd = '~/cave/notes_proj/' })
-    end, { desc = '[S]search Proj Notes' })
+    end, { desc = 'search Proj Notes' })
 
     vim.keymap.set('n', '<leader>sk', function()
       builtin.find_files({ cwd = '~/cave/kkk/' })
     end, { desc = '[S]search [K] Notes' })
 
     vim.keymap.set('n', '<Leader>f', function()
-      builtin.find_files(require('telescope.themes').get_dropdown {
+      builtin.find_files(themes.get_dropdown {
         previewer = false,
+        file_ignore_patterns = { '^tests/' },
       })
-    end, { desc = '[F]ind Files' })
+    end, { desc = 'Search [F]iles' })
+
+    vim.keymap.set('n', '<Leader>t', function()
+      builtin.find_files(themes.get_dropdown {
+        previewer = false,
+        cwd = 'tests',
+      })
+    end, { desc = 'Search [T]ests' })
 
     vim.keymap.set('n', 'Ł', function()
       builtin.find_files({ cwd = '../.dev/' })
     end)
 
     vim.keymap.set('n', '<Leader>z', function()
-      builtin.spell_suggest(require('telescope.themes').get_cursor({}))
+      builtin.spell_suggest(themes.get_cursor({}))
     end, { desc = 'Spelling Suggestions' })
   end,
 }
