@@ -11,7 +11,7 @@
       # core
       waybar
       swww
-      rofi-wayland
+      rofi
       wl-clipboard
       swaynotificationcenter
       libnotify
@@ -22,6 +22,7 @@
 
       # apps
       swayimg
+      vivaldi
       libreoffice
       webcord
       vesktop
