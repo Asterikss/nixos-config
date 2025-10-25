@@ -350,7 +350,9 @@ RD = function()
   require('dev-chronicles').setup({
     tracked_parent_dirs = { '~/projects/zzpackage/', '~/projects/' },
     tracked_dirs = { '~/nixos-config/' },
-    for_dev_start_time = session_active and session_active.start_time,
+    runtime_opts = {
+      for_dev_start_time = session_active and session_active.start_time,
+    },
     min_session_time = 0,
   })
   require('dev-chronicles').start_session()
