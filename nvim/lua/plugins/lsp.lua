@@ -28,8 +28,6 @@ return {
         map('<leader>D', require('telescope.builtin').lsp_type_definitions, 'Type [D]efinition')
         map('<leader>ds', require('telescope.builtin').lsp_document_symbols, '[D]ocument [S]ymbols')
         map('<leader>ws', require('telescope.builtin').lsp_dynamic_workspace_symbols, '[W]orkspace [S]ymbols')
-        map('<leader>rn', vim.lsp.buf.rename, '[R]e[n]ame')
-        map('<leader>ca', vim.lsp.buf.code_action, '[C]ode [A]ction', { 'n', 'x' })
         --  For example, in C this would take you to the header.
         map('gD', vim.lsp.buf.declaration, '[G]oto [D]eclaration')
 
@@ -75,21 +73,19 @@ return {
       end,
     })
 
-    -- Change diagnostic symbols in the sign column (gutter)
-    -- if vim.g.have_nerd_font then
-    --   local signs = { ERROR = '', WARN = '', INFO = '', HINT = '' }
-    --   local diagnostic_signs = {}
-    --   for type, icon in pairs(signs) do
-    --     diagnostic_signs[vim.diagnostic.severity[type]] = icon
-    --   end
-    --   vim.diagnostic.config { signs = { text = diagnostic_signs } }
-    -- end
+    local diagnostic_signs = {}
+    for type, icon in pairs({ ERROR = '󰻲', WARN = '󰯪', INFO = '', HINT = '󰝩' }) do
+      diagnostic_signs[vim.diagnostic.severity[type]] = icon
+    end
+
     vim.diagnostic.config({
-      virtual_text = false,
-      signs = true,
+      virtual_text = {
+        current_line = true,
+      },
       underline = true,
       update_in_insert = false,
       severity_sort = false,
+      signs = { text = diagnostic_signs },
       float = {
         style = 'minimal',
         border = 'rounded',
@@ -105,47 +101,6 @@ return {
       pyright = {},
       clangd = {},
       ts_ls = {},
-      -- taplo = {},
-      -- rust_analyzer = {},
-      lua_ls = {
-        -- cmd = {...}, -- Override the default command used to start the server
-        -- filetypes = { ...}, -- Override the default list of associated filetypes for the server
-        -- capabilities = {}, -- Override fields in capabilities. Can be used to disable certain LSP features.
-        settings = { -- To see the options for `lua_ls`, you could go to: https://luals.github.io/wiki/settings/
-          Lua = {
-            completion = {
-              callSnippet = 'Replace',
-            },
-            runtime = {
-              version = 'LuaJIT',
-            },
-            hint = {
-              enable = true,
-            },
-            diagnostics = {
-              globals = { 'vim', 'describe', 'it' },
-              unusedLocalExclude = { '_*' },
-              -- enable = true,
-              -- severity = {
-              --   ['undefined-field'] = 'Warning',
-              --   ['undefined-global'] = 'Warning',
-              --   ['missing-fields'] = 'Warning',
-              -- },
-            },
-            -- You can toggle below to ignore Lua_LS's noisy `missing-fields` warnings
-            -- diagnostics = { disable = { 'missing-fields' } },
-          },
-        },
-      },
-      -- jdtls = {}, say no to java, be strong
-      -- gopls = {},
-      -- ... etc. See `:help lspconfig-all` for a list of all the pre-configured LSPs
-      --
-      -- Some languages (like typescript) have entire language plugins that can be useful:
-      --    https://github.com/pmizio/typescript-tools.nvim
-      --
-      -- But for many setups, the LSP (`ts_ls`) will work just fine
-      -- ts_ls = {},
     }
 
     -- require('mason').setup()
@@ -156,8 +111,11 @@ return {
       -- by the server configuration above. Useful when disabling
       -- certain features of an LSP (for example, turning off formatting for ts_ls)
       server.capabilities = vim.tbl_deep_extend('force', {}, capabilities, server.capabilities or {})
-      require('lspconfig')[server_name].setup(server)
+      -- require('lspconfig')[server_name].setup(server)
+      -- vim.lsp.config['server_name'] = server
+      vim.lsp.enable(server_name)
     end
+    vim.lsp.enable('lua_ls')
 
     local ensure_installed = vim.tbl_keys(servers or {})
     local extra_tools = {
