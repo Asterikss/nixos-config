@@ -2,15 +2,25 @@ return {
   'MeanderingProgrammer/render-markdown.nvim',
   ft = 'markdown',
   dependencies = { 'nvim-treesitter/nvim-treesitter', 'echasnovski/mini.icons' },
-  ---@module 'render-markdown'
-  ---@type render.md.UserConfig
   opts = {
     render_modes = true,
     anti_conceal = {
       enabled = false,
     },
+    link = {
+      enabled = false,
+    },
+    inline_highlight = {
+      enabled = false,
+    },
+    html = {
+      enabled = false,
+    },
     heading = {
       setext = false,
+    },
+    sign = {
+      enabled = false,
     },
     checkbox = {
       unchecked = {
@@ -80,6 +90,12 @@ return {
           scope_highlight = 'TodoKindOfDone',
         },
       },
+    },
+    code = {
+      conceal_delimiters = false,
+      border = 'thin',
+      width = 'block',
+      highlight_border = 'CustomRenderMarkdownCodeBorder',
     },
     bullet = {
       icons = { '󰴈', '', '', '', '󰧱' },
