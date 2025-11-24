@@ -27,7 +27,7 @@
       "f" = "nvim";
       "h" = "nvim .";
       "S" = "v -c 'silent LoadDefaultSession'";
-      "n" = "nvim ../.dev/notes.txt";
+      "n" = "nvim ../.dev/notes.md";
       "p" = "python3";
       "l" = "eza --icons=auto";
       "ls" = "eza --icons=auto";
@@ -51,7 +51,7 @@
       # NixOS
       "reb" = "sudo nixos-rebuild switch --flake ~/nixos-config";
       "nd" = "nix develop";
-      "jp" = "nix develop ~/jupyter_flake";
+      "jp" = "nix develop ~/.jupyter_flake";
 
       # Git
       "st" = "git status";
@@ -71,9 +71,6 @@
       "dps" = "docker ps -a";
       "drmi" = "docker rmi";
       "drm" = "docker rm";
-
-      # "t" ='v -c term'
-      # "k" ='zellij'
     };
   };
 }
