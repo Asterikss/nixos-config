@@ -113,10 +113,23 @@ return {
             table.insert(args, pieces[2])
           end
 
-          return vim.tbl_flatten {
-            args,
-            { '--color=never', '--no-heading', '--with-filename', '--line-number', '--column', '--smart-case' },
-          }
+          table.insert(args, '-g')
+          table.insert(args, '!tests/**')
+
+          return vim
+            .iter({
+              args,
+              {
+                '--color=never',
+                '--no-heading',
+                '--with-filename',
+                '--line-number',
+                '--column',
+                '--smart-case',
+              },
+            })
+            :flatten()
+            :totable()
         end,
         entry_maker = require('telescope.make_entry').gen_from_vimgrep({}),
         cwd = vim.uv.cwd(),
