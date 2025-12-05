@@ -31,8 +31,10 @@ m('n', 'gO', 'O<Esc>j')
 
 m('n', '<Down>', '<c-w>-')
 m('n', '<Up>', '<c-w>+')
-m('n', '<Left>', '<c-w>>')
-m('n', '<Right>', '<c-w><')
+m('n', '<A-Left>', '<c-w>>')
+m('n', '<A-Right>', '<c-w><')
+m('n', '<Left>', '<cmd>cprev<CR>')
+m('n', '<Right>', '<cmd>cnext<CR>')
 
 m('i', '<A-7>', '<Esc>gT') -- Zellij for some reason eats Control PageUp (booo)
 m('i', '<A-8>', '<Esc>gt')
