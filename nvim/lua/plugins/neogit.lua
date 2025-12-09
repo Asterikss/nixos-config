@@ -11,12 +11,10 @@ return {
   },
   config = {
     prompt_force_push = false,
-    rebase_editor = {
+    mappings = {
       popup = {
-        ['X'] = false,
-      },
-      status = {
-        ['x'] = false,
+        ['w'] = false,
+        ['W'] = 'WorktreePopup',
       },
     },
   },
