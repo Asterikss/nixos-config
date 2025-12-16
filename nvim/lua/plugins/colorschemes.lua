@@ -42,6 +42,7 @@ return {
       vim.api.nvim_set_hl(0, 'Whitespace', { fg = '#E28315' })
       vim.api.nvim_set_hl(0, 'LineNr', { fg = '#877C95' }) -- 654D86
       vim.api.nvim_set_hl(0, 'IncSearch', { bg = '#87B4AB', fg = '#000000', bold = true })
+      vim.api.nvim_set_hl(0, '@markup.link.label.markdown_inline', { underline = false })
     end,
   },
 }
