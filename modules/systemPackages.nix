@@ -36,6 +36,7 @@
       xarchiver
       overskride
       gcolor3
+      simple-mtpfs
 
       # screenshot utils
       grim
