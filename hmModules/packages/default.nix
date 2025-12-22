@@ -31,6 +31,7 @@
     uv
     nixfmt-rfc-style
     devenv
+    podman-compose
     # rust-analyzer-unwrapped
     # nodejs_22
     # gh
